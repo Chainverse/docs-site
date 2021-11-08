@@ -196,7 +196,7 @@ sidebar_position: 1
 -   Sửa thông tin của News
 
     **Bước 1**: Click biểu tượng Edit với New cần sửa thông tin
-    ![edit news](Image/editnews1.png)
+    ![edit news](Image/Editnews1.png)
 
     **Bước 2**: Chỉnh sửa các trường thông tin
     ![edit news](Image/editNews2.png)
