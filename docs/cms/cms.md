@@ -34,13 +34,13 @@ sidebar_position: 1
     ![Tạo Dev 1](Image/Dev1.png)
 
     **Bước 2**: Click nút Create Developer
-    ![Tạo Dev 2](Image/Dev2.png)
+    ![Tạo Dev 2](Image/dev2.png)
 
     **Bước 3**: Tại Popup Create Developer nhập các thông tin của developer cần tạo, trong đó trường Name là bắt buộc
-    ![Tạo Dev 3](Image/Dev3.png)
+    ![Tạo Dev 3](Image/dev3.png)
 
     **Bước 4**: Click Submit để hoàn thành tạo Developer, nhận thông báo tạo thành công
-    ![Tạo Dev 4](Image/Dev4.png)
+    ![Tạo Dev 4](Image/dev4.png)
 
 ### **Chỉnh sửa Developer**
 
