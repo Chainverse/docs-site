@@ -108,7 +108,7 @@ sidebar_position: 1
     -   Có 2 status là Active và Inactive
     -   Click vào button Active/Inactive tại Category muốn chỉnh sửa để chuyển trạng thái
 
-    ![Sửa cate ](Image/editCate.png)
+    ![Sửa cate ](Image/editcate.png)
 
 ### **Xóa Category**
 
@@ -186,23 +186,23 @@ sidebar_position: 1
     ![post news](Image/New1.png)
 
     **Bước 2**: Nhập thông tin của các trường hợp lệ (tất cả các trường đều bắt buộc)
-    ![post news](Image/New2.png)
+    ![post news](Image/new2.png)
 
     **Bước 3**: Click Add hoặc Add more (khi muốn tạo News tiếp) để hoàn tất tạo News
-    ![post news](Image/New3.png)
+    ![post news](Image/new3.png)
 
 ### **Chỉnh sửa News**
 
 -   Sửa thông tin của News
 
     **Bước 1**: Click biểu tượng Edit với New cần sửa thông tin
-    ![edit news](Image/editNews1.png)
+    ![edit news](Image/editnews1.png)
 
     **Bước 2**: Chỉnh sửa các trường thông tin
     ![edit news](Image/editNews2.png)
 
     **Bước 3**: Click nút Publish để hoàn tất Chỉnh sửa thông tin và nhận thông báo thành công
-    ![edit news](Image/editNews3.png)
+    ![edit news](Image/EditNews3.png)
 
 *   Chỉnh sửa Status của News:
 
