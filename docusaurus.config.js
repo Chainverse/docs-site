@@ -26,16 +26,16 @@ module.exports = {
           position: 'left',
           label: 'Docs',
         },
-        { 
-          to: '/blog', 
-          label: 'Blog', 
+        // { 
+        //   to: '/blog', 
+        //   label: 'Blog', 
+        //   position: 'left',
+        // },
+        {
+          href: 'https://chainverse.org/',
+          label: 'Website',
           position: 'left',
         },
-        // {
-        //   href: 'https://github.com/facebook/docusaurus',
-        //   label: 'GitHub',
-        //   position: 'right',
-        // },
       ],
     },
     footer: {
@@ -104,7 +104,7 @@ module.exports = {
             'https://github.com/facebook/docusaurus/edit/main/website/blog/',
         },
         theme: {
-          customCss: require.resolve('./src/css/custom.css'),
+          customCss: require.resolve('./src/css/styles.css'),
         },
       },
     ],

@@ -2,34 +2,28 @@
 sidebar_position: 1
 ---
 
-# Tutorial Intro
+# ChainVerse Intro
 
-Let's discover **Docusaurus in less than 5 minutes**.
+### Blockchain Game Publishing Platform
+#### A full-stack blockchain solution for indie game developers to create token-based economies.
 
-## Getting Started
+Our full-stack solution is designed to abstract all the underlying blockchain technologies, so that developers can focus on building great games without having to manage the steep learning curves. Easily integrated, interoperable with any major chains, and instantly giving access to a network of 50 million mobile users, ChainVerse provides developers with cheap, convenient, and effective end-to-end solution to embark on their blockchain journey.
 
-Get started by **creating a new site**.
+#### NFTs for Games
+- Instant utilities
+- Seamless asset-crossing from game to game, chain to chain
+#### No risk
+- Keep your existing games
+- Compliment them with new revenue streams
+#### Instant access to relevant user & developer community
+- 50 Million mobile users
+- Network of 750 developers in Asia
+#### One-stop-shop
+- Powerful SDK
+- Comprehensive core services & end-user services
+- Seamless NFT & crypto wallet
+- Vibrant market place
 
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
-
-## Generate a new site
-
-Generate a new Docusaurus site using the **classic template**:
-
-```shell
-npx @docusaurus/init@latest init my-website classic
-```
-
-## Start your site
-
-Run the development server:
-
-```shell
-cd my-website
-
-npx docusaurus start
-```
-
-Your site starts at `http://localhost:3000`.
-
-Open `docs/intro.md` and edit some lines: the site **reloads automatically** and display your changes.
+#### Abundant Defi Options
+- Staking for rewards
+- Universal reward token (CRT) to back your own game currencies
