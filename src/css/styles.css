@@ -2356,6 +2356,7 @@ hr {
 .menu {
     font-weight: var(--ifm-font-weight-semibold);
     overflow-x: hidden;
+    padding: 1rem 0 1rem 0.5rem !important;
 }
 
 .menu__list {
