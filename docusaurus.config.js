@@ -26,6 +26,11 @@ module.exports = {
           position: 'left',
           label: 'Docs',
         },
+         {
+          href: 'https://chainverse.org/',
+          label: 'Website',
+          position: 'left',
+        },
       ],
     },
     footer: {
@@ -94,7 +99,7 @@ module.exports = {
             'https://github.com/facebook/docusaurus/edit/main/website/blog/',
         },
         theme: {
-          customCss: require.resolve('./src/css/styles.css'),
+          customCss: require.resolve('./src/css/custom.css'),
         },
       },
     ],
