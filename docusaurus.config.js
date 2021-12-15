@@ -26,16 +26,6 @@ module.exports = {
           position: 'left',
           label: 'Docs',
         },
-        // { 
-        //   to: '/blog', 
-        //   label: 'Blog', 
-        //   position: 'left',
-        // },
-        {
-          href: 'https://chainverse.org/',
-          label: 'Website',
-          position: 'left',
-        },
       ],
     },
     footer: {
