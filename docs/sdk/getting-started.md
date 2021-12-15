@@ -5,7 +5,7 @@ sidebar_position: 1
 
 # Chainverse SDK
 
-![Docusaurus logo](https://i.imgur.com/Dl4KbTt.png)
+![Docusaurus logo](https://docs.chainverse.org/img/chainverse.png)
 
 Đơn giản hoá tích hợp Blokchain vào game của bạn với Chainverse SDK. 
 
