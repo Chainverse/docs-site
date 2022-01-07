@@ -6,9 +6,9 @@ sidebar_position: 4
 # Chainverse SDK for Android
 
 ## Installation
-### Cài đặt Chainverse SDK qua Gralde. 
+### Cài đặt Chainverse SDK qua Grandle. 
 #### Bước 1: Khai báo repository
-Khai báo jitpack ở file build.gralde (project)
+Khai báo jitpack ở file build.gradle (project)
 
 ```
 maven {
@@ -19,7 +19,7 @@ maven {
 #### Bước 2: Khai báo dependencies
 
 ```
-implementation 'com.github.gmogame:chainversesdk:alpha-1.0.18'
+implementation 'com.github.Chainverse:android-sdk:1.0.11'
 ```
 
 ### Config trong file AndroidManifest.xml
