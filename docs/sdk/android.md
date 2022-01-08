@@ -19,7 +19,7 @@ maven {
 #### Bước 2: Khai báo dependencies
 
 ```
-implementation 'com.github.gmogame:chainversesdk:alpha-1.0.18'
+implementation 'com.github.Chainverse:android-sdk:1.0.11'
 ```
 
 ### Config trong file AndroidManifest.xml
@@ -151,7 +151,7 @@ public void onGetItems(ArrayList<ChainverseItem> items) {
 ```
 
 ##### 6. Callback onItemUpdate
-Khi​ chuyển Item NFT qua lại giữa user - user trong 1 game, và chuyển từ game này sang game kia. Callback này sẽ được gọi REALTIME. Thông tin trả về là 01 ITEM đã move. 
+Khi​ chuyển Item NFT qua lại giữa user - user trong 1 game, và chuyển từ game này sang game kia. Callback này sẽ được gọi REALTIME. Thông tin trả về là 01 ITEM đã move.
 
 Bạn sẽ xử lý ITEM trong game của bạn ở callback này.
 
@@ -169,12 +169,36 @@ public void onItemUpdate(ChainverseItem item, int type) {
 }
 ```
 
+##### 7. Callback onGetItemMarket
+Hàm callback này trả về danh sách các items của một game đang bán trên chợ.
+
+Bạn sẽ xử lý ITEM trên chợ ở callback này.
+
+```
+@Override
+public void onItemUpdate(ArrayList<ChainverseItemMarket> items) {
+    // TODO
+}
+```
+
+##### 7. Callback onBuy
+Hàm callback trả về transaction hash(tx) của một giao dịch.
+
+Bạn sẽ xử lý tx sau khi giao dịch thành công trên hàm này.
+
+```
+@Override
+public void onBuy(String tx) {
+    // TODO
+}
+```
+
 ##### Full example
 
 
 ```
- String developerAddress = "0xE1717d89f2d7A7b4834c2724408b319ABAf500ec";
- String gameAddress = "0xD146b45817fd18555c59c061C840e3a446Cd5A6c";
+ String developerAddress = "0x6A6c53a166DDDbE7049982864d21C75AB18fc50C";
+ String gameAddress = "0x13f1A9097A7Cd7BeBC5Ad5c79160db3067FEf20E";
  ChainverseSDK.getInstance().init(developerAddress,gameAddress,this, new ChainverseCallback() {
 
             @Override
@@ -207,6 +231,10 @@ public void onItemUpdate(ChainverseItem item, int type) {
                 LogUtil.log("onGetItems",items);
             }
 
+            @Override
+            public void onGetItemMarket(ArrayList<ChainverseItemMarket> items) {
+                LogUtil.log("onGetItemOnMarket", items)
+            }
 
             @Override
             public void onConnectSuccess(String address) {
@@ -216,6 +244,11 @@ public void onItemUpdate(ChainverseItem item, int type) {
             @Override
             public void onLogout(String address) {
                 
+            }
+            
+            @Override
+            public void onBuy(String tx) {
+                LogUtil.log("transasction has", tx)
             }
         });
         ChainverseSDK.getInstance().setScheme("your-app-scheme://");
@@ -321,7 +354,59 @@ Kiểm tra trạng thái connect ví của user. Trả về boolean
 ```
 boolean isConnect = ChainverseSDK.getInstance().isUserConnected()
 ```
+#### 11. Hàm getItemOnMarket
+Sử dụng hàm này để lấy danh sách ITEM của game đang bán trên chợ. Thông tin sẽ được trả về qua callback onGetItemMarket .
 
+```
+/**
+ * getItemOnMarket
+ * @param page
+ * @param pageSize
+ * @param itemName //(Search theo tên item. Nếu để rỗng thì search all)
+ * return
+ */
+ChainverseSDK.getInstance().getItemOnMarket(int page, int pageSize, String itemName);
+
+//Callback
+@Override
+public void onGetItemMarket(ArrayList<ChainverseItemMarket> items) {
+            
+}
+```
+
+#### 12. Hàm getNFT
+Sử dụng hàm này để lấy thông tin item trên blockchain.
+
+```
+/**
+ * getNFT
+ * @param nft
+ * @param tokenId
+ * return ChainverseItemMarket
+ */
+ChainverseSDK.getInstance().getNFT(String nft, BigInteger tokenId);
+```
+
+#### 13. Hàm buyNFT
+Sử dụng hàm này để mua item của game đang bán trên chợ. Thông tin transaction hash sẽ được trả về qua callback onBuy.
+
+```
+/**
+ * getNFT
+ * @param nft
+ * @param listing_id
+ * @param price
+ * @param isAuction
+ * return
+ */
+ChainverseSDK.getInstance().buyNFT(String currency, Long listing_id, Double price, boolean isAuction);
+
+//Callback
+@Override
+public void onBuy(String tx) {
+            
+}
+```
 
 ## License
 
