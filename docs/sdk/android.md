@@ -413,7 +413,7 @@ Sử dụng hàm này để lấy thông tin item trên blockchain.
  * getNFT
  * @param nft
  * @param tokenId
- * return ChainverseItemMarket
+ * return NFT
  */
 ChainverseSDK.getInstance().getNFT(String nft, BigInteger tokenId);
 ```
