@@ -19,7 +19,7 @@ maven {
 #### Bước 2: Khai báo dependencies
 
 ```
-implementation 'com.github.Chainverse:android-sdk:1.0.11'
+implementation 'com.github.Chainverse:android-sdk:1.0.17'
 ```
 
 ### Config trong file AndroidManifest.xml
@@ -169,19 +169,42 @@ public void onItemUpdate(ChainverseItem item, int type) {
 }
 ```
 
-##### 7. Callback onGetItemMarket
+##### 7. Callback onGetListItemMarket
 Hàm callback này trả về danh sách các items của một game đang bán trên chợ.
 
 Bạn sẽ xử lý ITEM trên chợ ở callback này.
 
 ```
 @Override
-public void onItemUpdate(ArrayList<ChainverseItemMarket> items) {
-    // TODO
+public void onGetListItemMarket(ArrayList<NFT> items) {
+
 }
 ```
 
-##### 7. Callback onBuy
+##### 8. Callback onGetMyAssets
+Hàm callback này trả về danh sách các items của user đang sở hữu.
+
+Bạn sẽ xử lý ITEM của user ở callback này.
+
+```
+@Override
+public void onGetMyAssets(ArrayList<NFT> items) {
+
+}
+```
+
+##### 9. Callback onGetDetailItem
+Hàm callback trả về thông tin chi tiết của item (Off chain)
+
+```
+@Override
+public void onGetDetailItem(NFT nft) {
+
+}
+```
+
+
+##### 10. Callback onBuy
 Hàm callback trả về transaction hash(tx) của một giao dịch.
 
 Bạn sẽ xử lý tx sau khi giao dịch thành công trên hàm này.
@@ -232,8 +255,18 @@ public void onBuy(String tx) {
             }
 
             @Override
-            public void onGetItemMarket(ArrayList<ChainverseItemMarket> items) {
-                LogUtil.log("onGetItemOnMarket", items)
+            public void onGetListItemMarket(ArrayList<NFT> items) {
+
+            }
+
+            @Override
+            public void onGetMyAssets(ArrayList<NFT> items) {
+
+            }
+
+            @Override
+            public void onGetDetailItem(NFT nft) {
+
             }
 
             @Override
@@ -271,7 +304,7 @@ ChainverseSDK.getInstance().connectWithChainverse();
 ```
 
 #### 3. Hàm getItems
-Sử dụng hàm này để lấy danh sách ITEM của user. Thông tin sẽ được trả về qua callback  onGetItems .
+Sử dụng hàm này để lấy danh sách ITEM của user đang trong game. Thông tin sẽ được trả về qua callback  onGetItems .
 
 ```
 ChainverseSDK.getInstance().getItems();
@@ -354,22 +387,20 @@ Kiểm tra trạng thái connect ví của user. Trả về boolean
 ```
 boolean isConnect = ChainverseSDK.getInstance().isUserConnected()
 ```
-#### 11. Hàm getItemOnMarket
-Sử dụng hàm này để lấy danh sách ITEM của game đang bán trên chợ. Thông tin sẽ được trả về qua callback onGetItemMarket .
+#### 11. Hàm getListItemOnMarket
+Sử dụng hàm này để lấy danh sách ITEM của game đang bán trên chợ. Thông tin sẽ được trả về qua callback onGetListItemMarket.
 
 ```
 /**
  * getItemOnMarket
- * @param page
- * @param pageSize
- * @param itemName //(Search theo tên item. Nếu để rỗng thì search all)
+ * @param FilterMarket
  * return
  */
-ChainverseSDK.getInstance().getItemOnMarket(int page, int pageSize, String itemName);
+ChainverseSDK.getInstance().getItemOnMarket(FilterMarket filterMarket);
 
 //Callback
 @Override
-public void onGetItemMarket(ArrayList<ChainverseItemMarket> items) {
+public void onGetListItemMarket(ArrayList<NFT> items) {
             
 }
 ```
@@ -387,13 +418,51 @@ Sử dụng hàm này để lấy thông tin item trên blockchain.
 ChainverseSDK.getInstance().getNFT(String nft, BigInteger tokenId);
 ```
 
-#### 13. Hàm buyNFT
+#### 13. Hàm getMyAsset
+Sử dụng hàm này để lấy danh sách item user đang sở hữu (Kể cả đang được bán trên chợ). Thông tin sẽ được trả về qua callback onGetMyAssets.
+
+```
+/**
+ * getMyAsset
+ * return
+ */
+ChainverseSDK.getInstance().getMyAsset();
+
+
+//Callback
+@Override
+public void onGetMyAssets(ArrayList<NFT> items) {
+            
+}
+```
+
+#### 14. Hàm getDetailNFT
+Sử dụng hàm này để lấy thông tin chi tiết của 1 item (Thông tin này là Off chain). Thông tin sẽ được trả về qua callback onGetDetailItem.
+
+```
+/**
+ * getDetailNFT
+ * @param nft
+ * @param tokenId
+ * return
+ */
+ChainverseSDK.getInstance().getDetailNFT(String nft, BigInteger tokenId);
+
+
+//Callback
+@Override
+public void onGetDetailItem(NFT items) {
+            
+}
+```
+
+#### 15. Hàm buyNFT
 Sử dụng hàm này để mua item của game đang bán trên chợ. Thông tin transaction hash sẽ được trả về qua callback onBuy.
 
 ```
 /**
- * getNFT
- * @param nft
+ * buyNFT
+ * @param currency
  * @param listing_id
  * @param price
  * @param isAuction
@@ -408,6 +477,46 @@ public void onBuy(String tx) {
 }
 ```
 
+#### 16. Hàm isApproved
+Hàm này sử dụng để kiểm tra item bạn muốn bán đã được approved cho chợ chưa.
+
+Chú ý: Trước khi muốn bán item, bạn phải approve item đó cho chợ.
+
+```
+/**
+ * isApproved
+ * @param nft
+ * @param tokenId
+ * return boolean
+ */
+ChainverseSDK.getInstance().isApproved(String nft, BigInteger tokenId);
+```
+
+#### 17. Hàm approveNFT
+Hàm này sử dụng để approve item bạn muốn bán cho chợ. Hàm này trả về transaction hash.
+```
+/**
+ * approveNFT
+ * @param nft
+ * @param tokenId
+ * return String
+ */
+ChainverseSDK.getInstance().approveNFT(String nft, BigInteger tokenId);
+```
+
+#### 18. Hàm sellNFT
+Hàm này sử dụng để bán item lên chợ. Hàm này trả về transaction hash.
+```
+/**
+ * sellNFT
+ * @param nft
+ * @param tokenId
+ * @param price
+ * @param currency
+ * return String
+ */
+ChainverseSDK.getInstance().sellNFT(String nft, BigInteger tokenId, double price, String currency);
+```
 ## License
 
 Chainverse SDK Android sử dụng những thư viện sau:
