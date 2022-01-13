@@ -174,6 +174,8 @@ Hàm callback này trả về danh sách các items của một game đang bán 
 
 Bạn sẽ xử lý ITEM trên chợ ở callback này.
 
+Lưu ý: Vì danh sách được lấy từ database (Off chain) nên các thông tin trên blockchain sẽ không được chính xác. Chính vì vậy, chúng ta cần phải gọi hàm [getNFT](#12-hàm-getnft) để lấy các thông tin đang có trên blockchain.
+
 ```
 @Override
 public void onGetListItemMarket(ArrayList<NFT> items) {
@@ -185,6 +187,8 @@ public void onGetListItemMarket(ArrayList<NFT> items) {
 Hàm callback này trả về danh sách các items của user đang sở hữu.
 
 Bạn sẽ xử lý ITEM của user ở callback này.
+
+Lưu ý: Vì danh sách được lấy từ database (Off chain) nên các thông tin trên blockchain sẽ không được chính xác. Chính vì vậy, chúng ta cần phải gọi hàm [getNFT](#12-hàm-getnft) để lấy các thông tin đang có trên blockchain.
 
 ```
 @Override
@@ -388,7 +392,7 @@ Kiểm tra trạng thái connect ví của user. Trả về boolean
 boolean isConnect = ChainverseSDK.getInstance().isUserConnected()
 ```
 #### 11. Hàm getListItemOnMarket
-Sử dụng hàm này để lấy danh sách ITEM của game đang bán trên chợ. Thông tin sẽ được trả về qua callback onGetListItemMarket.
+Sử dụng hàm này để lấy danh sách ITEM của game đang bán trên chợ. Thông tin sẽ được trả về qua callback [onGetListItemMarket](#7-callback-ongetlistitemmarket).
 
 ```
 /**
@@ -419,7 +423,7 @@ ChainverseSDK.getInstance().getNFT(String nft, BigInteger tokenId);
 ```
 
 #### 13. Hàm getMyAsset
-Sử dụng hàm này để lấy danh sách item user đang sở hữu (Kể cả đang được bán trên chợ). Thông tin sẽ được trả về qua callback onGetMyAssets.
+Sử dụng hàm này để lấy danh sách item user đang sở hữu (Kể cả đang được bán trên chợ). Thông tin sẽ được trả về qua callback [onGetMyAssets](#8-callback-ongetmyassets).
 
 ```
 /**
@@ -437,7 +441,7 @@ public void onGetMyAssets(ArrayList<NFT> items) {
 ```
 
 #### 14. Hàm getDetailNFT
-Sử dụng hàm này để lấy thông tin chi tiết của 1 item (Thông tin này là Off chain). Thông tin sẽ được trả về qua callback onGetDetailItem.
+Sử dụng hàm này để lấy thông tin chi tiết của 1 item (Thông tin này là Off chain). Thông tin sẽ được trả về qua callback [onGetDetailItem](#9-callback-ongetdetailitem).
 
 ```
 /**
@@ -457,8 +461,11 @@ public void onGetDetailItem(NFT items) {
 ```
 
 #### 15. Hàm buyNFT
-Sử dụng hàm này để mua item của game đang bán trên chợ. Thông tin transaction hash sẽ được trả về qua callback onBuy.
+Sử dụng hàm này để mua item của game đang bán trên chợ. Thông tin transaction hash sẽ được trả về qua callback [onBuy](##10-callback-onbuy).
 
+Hàm này sử dụng giao diện của sdk.
+
+Nếu bạn muốn sử dụng giao diện riêng thì gọi đến hàm logic [buyNFT](#20-hàm-buynft)
 ```
 /**
  * buyNFT
@@ -476,8 +483,23 @@ public void onBuy(String tx) {
             
 }
 ```
-
 #### 16. Hàm isApproved
+Hàm này sử dụng để lấy số lượng token mà bạn đã approved cho một địa chỉ nào đó.
+
+Chú ý: Trước khi muốn mua item trên chợ, bạn cần phải approve một lượng token (**không nhỏ hơn giá trị của item**) cho chợ
+
+```
+/**
+ * isApproved
+ * @param token //địa chỉ token
+ * @param owner // địa chỉ chủ sở hữu
+ * @param spender // địa chỉ đã được approved
+ * return BigInteger
+ */
+ChainverseSDK.getInstance().isApproved(String token, String owner, String spender);
+```
+
+#### 17. Hàm isApproved
 Hàm này sử dụng để kiểm tra item bạn muốn bán đã được approved cho chợ chưa.
 
 Chú ý: Trước khi muốn bán item, bạn phải approve item đó cho chợ.
@@ -492,7 +514,20 @@ Chú ý: Trước khi muốn bán item, bạn phải approve item đó cho chợ
 ChainverseSDK.getInstance().isApproved(String nft, BigInteger tokenId);
 ```
 
-#### 17. Hàm approveNFT
+#### 18. Hàm approveToken
+Hàm này sử dụng để approve token cho một địa chỉ. Hàm này trả về transaction hash.
+```
+/**
+ * approveToken
+ * @param token // địa chỉ token
+ * @param spender // địa chỉ sẽ được approved
+ * @param amount // số lượng
+ * return String
+ */
+ChainverseSDK.getInstance().approveNFT(String token, String spender, double amount);
+```
+
+#### 19. Hàm approveNFT
 Hàm này sử dụng để approve item bạn muốn bán cho chợ. Hàm này trả về transaction hash.
 ```
 /**
@@ -504,7 +539,7 @@ Hàm này sử dụng để approve item bạn muốn bán cho chợ. Hàm này 
 ChainverseSDK.getInstance().approveNFT(String nft, BigInteger tokenId);
 ```
 
-#### 18. Hàm sellNFT
+#### 20. Hàm sellNFT
 Hàm này sử dụng để bán item lên chợ. Hàm này trả về transaction hash.
 ```
 /**
@@ -516,6 +551,23 @@ Hàm này sử dụng để bán item lên chợ. Hàm này trả về transacti
  * return String
  */
 ChainverseSDK.getInstance().sellNFT(String nft, BigInteger tokenId, double price, String currency);
+```
+
+#### 20. Hàm buyNFT
+Hàm này sử dụng để mua item đang bán trên chợ. Hàm này trả về transaction hash.
+
+Lưu ý: Nếu bạn mua bằng token, bạn cần phải kiểm tra số lượng token đã approve cho chợ bằng hàm [isApproved](#16-hàm-isapproved).
+
+Nếu không approve token trước khi mua, bạn có thể sẽ gặp lỗi sau: **execution reverted: ERC20: transfer amount exceeds allowance**
+```
+/**
+ * buyNFT
+ * @param currency
+ * @param listingId
+ * @param price
+ * return String
+ */
+ChainverseSDK.getInstance().buyNFT(String currency, BigInteger listingId, double price);
 ```
 ## License
 
