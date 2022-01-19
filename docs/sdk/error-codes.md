@@ -16,3 +16,5 @@ Danh sách mã lỗi của Chainverse SDK
 | ERROR_DEVELOPER_ADDRESS | 1004  | Developer address không đúng | Hãy kiểm tra lại |
 | ERROR_GAME_PAUSE | 1005  | Game đang bị pause | Hãy kiểm tra lại |
 | ERROR_DEVELOPER_PAUSE | 1006  | Developer đang bị pause | Hãy kiểm tra lại |
+| ERROR_CALL_FUNCTION | 1007  | Lỗi khi gọi sai tên hàm | Hãy kiểm tra lại |
+| ERROR_SERVICE_NOT_FOUND | 1008  | Lỗi khi lấy thông tin service của game | Hãy kiểm tra lại |
