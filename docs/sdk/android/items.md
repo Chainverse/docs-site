@@ -85,3 +85,17 @@ Sử dụng hàm này để lấy thông tin item trên blockchain.
  */
 ChainverseSDK.getInstance().getNFT(String nft, BigInteger tokenId);
 ```
+
+## 6. Hàm transferItem
+Sử dụng hàm này để chuyển item sang địa chỉ ví khác. Hàm này trả về transaction hash.
+
+```
+/**
+ * transferItem
+ * @param to
+ * @param nft
+ * @param tokenId
+ * return String
+ */
+ChainverseSDK.getInstance().transferItem(String to, String nft, BigInteger tokenId);
+```

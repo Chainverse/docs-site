@@ -18,24 +18,16 @@ values={[
 { label: 'Object C', value: '1', },
 { label: 'Swift', value: '2', },]}>
 <TabItem value="1">
-<div style={{
-    width:'100%',backgroundColor:'#e6ecf5',
-    padding:10,
-    paddingLeft:20,
-    borderRadius:7
- }}>
-    <div>[[ChainverseSDK shared] showConnectView];</div> 
-</div>
+
+```angular2html
+[[ChainverseSDK shared] showConnectView];
+```
 </TabItem>
 <TabItem value="2">
-    <div style={{
-    width:'100%',backgroundColor:'#e6ecf5',
-    padding:10,
-    paddingLeft:20,
-    borderRadius:7
- }}>
-    <div>ChainverseSDK.shared().showConnectView()</div>
-    </div>
+
+```angular2html
+ChainverseSDK.shared().showConnectView()
+```
 </TabItem>
 </Tabs>
 
@@ -49,28 +41,55 @@ values={[
 { label: 'Object C', value: '1', },
 { label: 'Swift', value: '2', },]}>
 <TabItem value="1">
-<div style={{
-    width:'100%',backgroundColor:'#e6ecf5',
-    padding:10,
-    paddingLeft:20,
-    borderRadius:7
- }}>
-    <div>[[ChainverseSDK shared] connectWithChainverse];</div> 
-</div>
+
+```angular2html
+[[ChainverseSDK shared] connectWithChainverse];
+```
 </TabItem>
 <TabItem value="2">
-    <div style={{
-    width:'100%',backgroundColor:'#e6ecf5',
-    padding:10,
-    paddingLeft:20,
-    borderRadius:7
- }}>
-    <div>ChainverseSDK.shared().connectWithChainverse()</div>
-    </div>
+
+```angular2html
+ChainverseSDK.shared().connectWithChainverse()
+```
 </TabItem>
 </Tabs>
 
-## 3. Hàm logout
+## 3. Hàm getItems
+Sử dụng hàm này để lấy danh sách ITEM của user. Thông tin sẽ được trả về qua callback didGetItems.
+
+<Tabs
+defaultValue="1"
+groupId="operating-systems"
+values={[
+{ label: 'Object C', value: '1', },
+{ label: 'Swift', value: '2', },]}>
+<TabItem value="1">
+
+```angular2html
+[[ChainverseSDK shared] getItems];
+
+//Callback delegate
+- (void)didGetItems:(NSMutableArray *)items{
+    for(ChainverseItem *itemx in items){
+        NSLog(@"TAG %@",itemx.game_address);
+    }
+}
+```
+</TabItem>
+<TabItem value="2">
+
+```angular2html
+ChainverseSDK.shared().getItems()
+
+//Callback delegate
+func didGetItems(_ items: NSMutableArray!) {
+
+}
+```
+</TabItem>
+</Tabs>
+
+## 4. Hàm logout
 Gọi hàm này để thực hiện logout. Thông tin được trả về qua callback didLogout .
 
 <Tabs
@@ -80,37 +99,30 @@ values={[
 { label: 'Object C', value: '1', },
 { label: 'Swift', value: '2', },]}>
 <TabItem value="1">
-<div style={{
-    width:'100%',backgroundColor:'#e6ecf5',
-    padding:10,
-    paddingLeft:20,
-    borderRadius:7
- }}>
-    <div>[[ChainverseSDK shared] logout];</div> 
-<h1/>
-    <div>//Delegate callback</div> 
-    <div>{`- (void)didLogout:(NSString *)address{`}</div> 
-    <h1/>
-    <div>{`}`}</div> 
-</div>
+
+```angular2html
+[[ChainverseSDK shared] logout];
+
+//Delegate callback
+- (void)didLogout:(NSString *)address{
+   
+}
+
+```
 </TabItem>
 <TabItem value="2">
-    <div style={{
-    width:'100%',backgroundColor:'#e6ecf5',
-    padding:10,
-    paddingLeft:20,
-    borderRadius:7
- }}>
-    <div>ChainverseSDK.shared().logout()</div>
-    <div>//callback</div>
-    <div>{`func didLogout(_ address: String!) {`}</div>
-    <h1/>
-    <div>{`}`}</div>
-    </div>
+
+```angular2html
+ChainverseSDK.shared().logout()
+//callback
+func didLogout(_ address: String!) {
+       
+}
+```
 </TabItem>
 </Tabs>
 
-## 4. Hàm hứng data được trả về từ ví  Chainverse
+## 5. Hàm hứng data được trả về từ ví  Chainverse
 Khi connect thành công với ví Chainverse. Chainverse sẽ mở lại app/game thông qua scheme (đã khai báo ở phần Intergrate SDK). Vì vậy cần khai báo các hàm này để Chainverse SDK xử lý dữ liệu được trả về từ ví Chainverse.
 Khai báo ở file AppDeletegate :
 
@@ -121,36 +133,26 @@ values={[
 { label: 'Object C', value: '1', },
 { label: 'Swift', value: '2', },]}>
 <TabItem value="1">
-<div style={{
-    width:'100%',backgroundColor:'#e6ecf5',
-    padding:10,
-    paddingLeft:20,
-    borderRadius:7
- }}>
-    <div>[[ChainverseSDK shared] handleOpenUrl:(UIApplication *)app</div>
-    <div>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;openURL:(NSURL *)url</div>
-    <div>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;{`options:(NSDictionary
-        <UIApplicationOpenURLOptionsKey
-        , id> *)options];`}</div>
-<h1/>
-    <div>//Nếu dự án sử dụng SceneDelegate thì khai báo như sau:</div> 
-    <h1/>
-    <div>{`[[ChainverseSDK shared] handleOpenUrl:scene openURLContexts:URLContexts];`}</div> 
-</div>
+
+```angular2html
+[[ChainverseSDK shared] handleOpenUrl:(UIApplication *)app
+                              openURL:(NSURL *)url
+                              options:(NSDictionary<UIApplicationOpenURLOptionsKey, id> *)options];
+
+//Nếu dự án sử dụng SceneDelegate thì khai báo như sau: 
+
+[[ChainverseSDK shared] handleOpenUrl:scene openURLContexts:URLContexts];
+```
 </TabItem>
 <TabItem value="2">
-    <div style={{
-    width:'100%',backgroundColor:'#e6ecf5',
-    padding:10,
-    paddingLeft:20,
-    borderRadius:7
- }}>
-    <div>{`ChainverseSDK.shared().handleOpenUrl(app, open: url, options: options)`}</div>
-    </div>
+
+```angular2html
+ChainverseSDK.shared().handleOpenUrl(app, open: url, options: options)
+```
 </TabItem>
 </Tabs>
 
-## 5. Hàm setKeepConnect
+## 6. Hàm setKeepConnect
 Hàm này tuỳ chọn thiết lập trạng thái giữ connect với ví Chainverse (Khi vào lại app không cần phải kết nối lại ví)
 *true : Giữ trạng thái keep connect.
 *false: Không giữ trạng thái keep connect.
@@ -162,28 +164,20 @@ values={[
 { label: 'Object C', value: '1', },
 { label: 'Swift', value: '2', },]}>
 <TabItem value="1">
-<div style={{
-    width:'100%',backgroundColor:'#e6ecf5',
-    padding:10,
-    paddingLeft:20,
-    borderRadius:7
- }}>
-    <div>[[ChainverseSDK shared] setKeepConnect:TRUE];</div>
-</div>
+
+```angular2html
+[[ChainverseSDK shared] setKeepConnect:TRUE];
+```
 </TabItem>
 <TabItem value="2">
-    <div style={{
-    width:'100%',backgroundColor:'#e6ecf5',
-    padding:10,
-    paddingLeft:20,
-    borderRadius:7
- }}>
-    <div>{`ChainverseSDK.shared().setKeepConnect(true)`}</div>
-    </div>
+
+```angular2html
+ChainverseSDK.shared().setKeepConnect(true)
+```
 </TabItem>
 </Tabs>
 
-## 6. Hàm getVersion
+## 7. Hàm getVersion
 Trả về version của SDK
 
 <Tabs
@@ -193,24 +187,16 @@ values={[
 { label: 'Object C', value: '1', },
 { label: 'Swift', value: '2', },]}>
 <TabItem value="1">
-<div style={{
-    width:'100%',backgroundColor:'#e6ecf5',
-    padding:10,
-    paddingLeft:20,
-    borderRadius:7
- }}>
-    <div>[[ChainverseSDK shared] getVersion]</div>
-</div>
+
+```angular2html
+[[ChainverseSDK shared] getVersion]
+```
 </TabItem>
 <TabItem value="2">
-    <div style={{
-    width:'100%',backgroundColor:'#e6ecf5',
-    padding:10,
-    paddingLeft:20,
-    borderRadius:7
- }}>
-    <div>{`ChainverseSDK.shared().getVersion()`}</div>
-    </div>
+
+```angular2html
+ChainverseSDK.shared().getVersion()
+```
 </TabItem>
 </Tabs>
 
@@ -224,26 +210,18 @@ values={[
 { label: 'Object C', value: '1', },
 { label: 'Swift', value: '2', },]}>
 <TabItem value="1">
-<div style={{
-    width:'100%',backgroundColor:'#e6ecf5',
-    padding:10,
-    paddingLeft:20,
-    borderRadius:7
- }}>
-    <div>ChainverseUser *info = [[ChainverseSDK shared] getUser];</div>
-    <div>NSLog(@"TAG %@",[info address]);</div>
-    <div>NSLog(@"TAG %@",[info signature]);</div>
-</div>
+
+```angular2html
+ChainverseUser *info = [[ChainverseSDK shared] getUser];
+NSLog(@"TAG %@",[info address]);
+NSLog(@"TAG %@",[info signature]);
+```
 </TabItem>
 <TabItem value="2">
-    <div style={{
-    width:'100%',backgroundColor:'#e6ecf5',
-    padding:10,
-    paddingLeft:20,
-    borderRadius:7
- }}>
-    <div>{`let info: ChainverseUser = ChainverseSDK.shared().getUser()`}</div>
-    </div>
+
+```angular2html
+let info: ChainverseUser = ChainverseSDK.shared().getUser()
+```
 </TabItem>
 </Tabs>
 
@@ -257,24 +235,16 @@ values={[
 { label: 'Object C', value: '1', },
 { label: 'Swift', value: '2', },]}>
 <TabItem value="1">
-<div style={{
-    width:'100%',backgroundColor:'#e6ecf5',
-    padding:10,
-    paddingLeft:20,
-    borderRadius:7
- }}>
-    <div>[[ChainverseSDK shared] isUserConnected];</div>
-</div>
+
+```angular2html
+[[ChainverseSDK shared] isUserConnected];
+```
 </TabItem>
 <TabItem value="2">
-    <div style={{
-    width:'100%',backgroundColor:'#e6ecf5',
-    padding:10,
-    paddingLeft:20,
-    borderRadius:7
- }}>
-    <div>{`ChainverseSDK.shared().isUserConnected()`}</div>
-    </div>
+
+```angular2html
+ChainverseSDK.shared().isUserConnected()
+```
 </TabItem>
 </Tabs>
 
