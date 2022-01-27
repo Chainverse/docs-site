@@ -78,33 +78,25 @@ values={[
 { label: 'Object C', value: '1', },
 { label: 'Swift', value: '2', },]}>
 <TabItem value="1">
-<div style={{
-    width:'100%',backgroundColor:'#e6ecf5',
-    padding:10,
-    paddingLeft:20,
-    borderRadius:7
- }}>
-    <div>#import "Chainverse/ChainverseSDK.h"</div>
-    <div>#import "Chainverse/ChainverseSDKCallback.h"</div>
-    <div>#import "Chainverse/ChainverseItem.h"</div>
-    <h1/>
-    <div>{`@interface AppDelegate () <ChainverseSDKCallback>`}</div>
-    <h1/>
-    <div>@end</div>
-</div>
+
+```angular2html
+#import "Chainverse/ChainverseSDK.h"
+#import "Chainverse/ChainverseSDKCallback.h"
+#import "Chainverse/ChainverseItem.h"
+
+@interface AppDelegate () <ChainverseSDKCallback>
+
+@end
+```
+
 </TabItem>
 <TabItem value="2">
-    <div style={{
-    width:'100%',backgroundColor:'#e6ecf5',
-    padding:10,
-    paddingLeft:20,
-    borderRadius:7
- }}>
-        <span>
-{`class AppDelegate: ChainverseSDKCallback {\n
-    }`}
-</span>
-    </div>
+
+```angular2html
+class AppDelegate: ChainverseSDKCallback {
+}
+```
+
 </TabItem>
 </Tabs>
 
@@ -118,32 +110,26 @@ values={[
 { label: 'Object C', value: '1', },
 { label: 'Swift', value: '2', },]}>
 <TabItem value="1">
-<div style={{
-    width:'100%',backgroundColor:'#e6ecf5',
-    padding:10,
-    paddingLeft:20,
-    borderRadius:7
- }}>
-    <div>[ChainverseSDK shared].developerAddress = @"DeveloperAddress";</div> 
-<div>[ChainverseSDK shared].gameAddress = @"GameAddress";</div>
-<div>[ChainverseSDK shared].scheme = @"your-app-scheme://";</div>
-<div>[ChainverseSDK shared].delegate = self;</div>
-<div>[[ChainverseSDK shared] initialize];</div>
-</div>
+
+```angular2html
+[ChainverseSDK shared].developerAddress = @"DeveloperAddress";
+[ChainverseSDK shared].gameAddress = @"GameAddress";
+[ChainverseSDK shared].scheme = @"your-app-scheme://";
+[ChainverseSDK shared].delegate = self;
+[[ChainverseSDK shared] initialize];
+```
+
 </TabItem>
 <TabItem value="2">
-    <div style={{
-    width:'100%',backgroundColor:'#e6ecf5',
-    padding:10,
-    paddingLeft:20,
-    borderRadius:7
- }}>
-        <div>ChainverseSDK.shared().developerAddress = "DeveloperAddress"</div>
-<div>ChainverseSDK.shared().gameAddress = "GameAddress"</div>
-<div>ChainverseSDK.shared().scheme = "your-app-scheme://";</div>
-<div>ChainverseSDK.shared().delegate = self</div>
-<div>ChainverseSDK.shared().initialize()</div>
-    </div>
+
+```angular2html
+ChainverseSDK.shared().developerAddress = "DeveloperAddress"
+ChainverseSDK.shared().gameAddress = "GameAddress"
+ChainverseSDK.shared().scheme = "your-app-scheme://";
+ChainverseSDK.shared().delegate = self
+ChainverseSDK.shared().initialize()
+```
+
 </TabItem>
 </Tabs>
 
@@ -160,24 +146,20 @@ values={[
 { label: 'Object C', value: '1', },
 { label: 'Swift', value: '2', },]}>
 <TabItem value="1">
-<div style={{
-    width:'100%',backgroundColor:'#e6ecf5',
-    padding:10,
-    paddingLeft:20,
-    borderRadius:7
- }}>
-    <div>{`- (void)didInitSDKSuccess{\n }`}</div> 
-</div>
+
+```angular2html
+- (void)didInitSDKSuccess{ 
+}
+```
+
 </TabItem>
 <TabItem value="2">
-    <div style={{
-    width:'100%',backgroundColor:'#e6ecf5',
-    padding:10,
-    paddingLeft:20,
-    borderRadius:7
- }}>
-        <div>{`func didInitSDKSuccess() {\n}`}</div>
-    </div>
+
+```angular2html
+func didInitSDKSuccess() {
+}
+```
+
 </TabItem>
 </Tabs>
 
@@ -191,26 +173,22 @@ values={[
 { label: 'Object C', value: '1', },
 { label: 'Swift', value: '2', },]}>
 <TabItem value="1">
-<div style={{
-    width:'100%',backgroundColor:'#e6ecf5',
-    padding:10,
-    paddingLeft:20,
-    borderRadius:7
- }}>
-    <div>{`- (void)didError:(int)error{ }`}</div> 
-</div>
+
+```angular2html
+- (void)didError:(int)error{
+    
+}
+```
+
 </TabItem>
 <TabItem value="2">
-    <div style={{
-    width:'100%',backgroundColor:'#e6ecf5',
-    padding:10,
-    paddingLeft:20,
-    borderRadius:7
- }}>
-    <div>
-            {`func didError(_ error: Int32) { }`}
-</div>
-    </div>
+
+```angular2html
+func didError(_ error: Int32) {
+       
+}
+```
+
 </TabItem>
 </Tabs>
 
@@ -224,26 +202,22 @@ values={[
 { label: 'Object C', value: '1', },
 { label: 'Swift', value: '2', },]}>
 <TabItem value="1">
-<div style={{
-    width:'100%',backgroundColor:'#e6ecf5',
-    padding:10,
-    paddingLeft:20,
-    borderRadius:7
- }}>
-    <div>{`- (void)didConnectSuccess:(NSString *)address{ }`}</div> 
-</div>
+
+```angular2html
+- (void)didConnectSuccess:(NSString *)address{
+    
+}
+```
+
 </TabItem>
 <TabItem value="2">
-    <div style={{
-    width:'100%',backgroundColor:'#e6ecf5',
-    padding:10,
-    paddingLeft:20,
-    borderRadius:7
- }}>
-    <div>
-            {`func didConnectSuccess(_ address: String!) { }`}
-</div>
-    </div>
+
+```angular2html
+func didConnectSuccess(_ address: String!) {
+
+}
+```
+
 </TabItem>
 </Tabs>
 
@@ -257,26 +231,22 @@ values={[
 { label: 'Object C', value: '1', },
 { label: 'Swift', value: '2', },]}>
 <TabItem value="1">
-<div style={{
-    width:'100%',backgroundColor:'#e6ecf5',
-    padding:10,
-    paddingLeft:20,
-    borderRadius:7
- }}>
-    <div>{`- (void)didLogout:(NSString *)address{ }`}</div> 
-</div>
+
+```angular2html
+- (void)didLogout:(NSString *)address{
+   
+}
+```
+
 </TabItem>
 <TabItem value="2">
-    <div style={{
-    width:'100%',backgroundColor:'#e6ecf5',
-    padding:10,
-    paddingLeft:20,
-    borderRadius:7
- }}>
-    <div>
-            {`func didLogout(_ address: String!) { }`}
-</div>
-    </div>
+
+```angular2html
+func didLogout(_ address: String!) {
+
+}
+```
+
 </TabItem>
 </Tabs>
 
@@ -293,30 +263,23 @@ values={[
 { label: 'Object C', value: '1', },
 { label: 'Swift', value: '2', },]}>
 <TabItem value="1">
-<div style={{
-    width:'100%',backgroundColor:'#e6ecf5',
-    padding:10,
-    paddingLeft:20,
-    borderRadius:7
- }}>
-    <div>{`- (void)didGetItems:(NSMutableArray *)items {`}</div> 
-    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{`for(ChainverseItem *itemx in items){`}</div> 
-    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{`NSLog(@"TAG %@",itemx.game_address);`}</div> 
-    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{`}`}</div> 
-    <div>{`}`}</div> 
-</div>
+
+```angular2html
+- (void)didGetItems:(NSMutableArray *)items{
+    for(ChainverseItem *itemx in items){
+        NSLog(@"TAG %@",itemx.game_address);
+    }
+}
+```
+
 </TabItem>
 <TabItem value="2">
-    <div style={{
-    width:'100%',backgroundColor:'#e6ecf5',
-    padding:10,
-    paddingLeft:20,
-    borderRadius:7
- }}>
-    <div>
-            {`func didGetItems(_ items: NSMutableArray!) { }`}
-</div>
-    </div>
+
+```angular2html
+func didGetItems(_ items: NSMutableArray!) {
+       
+}
+```
 </TabItem>
 </Tabs>
 
@@ -333,47 +296,51 @@ values={[
 { label: 'Object C', value: '1', },
 { label: 'Swift', value: '2', },]}>
 <TabItem value="1">
-<div style={{
-    width:'100%',backgroundColor:'#e6ecf5',
-    padding:10,
-    paddingLeft:20,
-    borderRadius:7
- }}>
-    <div>{`- (void)didItemUpdate:(ChainverseItem *)item type:(int)type {`}</div> 
-    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{`switch (type) {`}</div> 
-    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{`case TRANSFER_ITEM_TO_USER:`}</div> 
-    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{`//Xử lý item trong game khi item NFT chuyển tới tài khoản của bạn`}</div> 
-    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{`break;`}</div> 
-    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{`case TRANSFER_ITEM_FROM_USER:`}</div> 
-    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{`//Xử lý item trong game khi item NFT của bạn chuyến tời tài khoản khác`}</div> 
-    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{`break;`}</div> 
-    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{`}`}</div> 
-    <div>{`}`}</div> 
-</div>
+
+```angular2html
+- (void)didItemUpdate:(ChainverseItem *)item type:(int)type{
+    switch (type) {
+        case TRANSFER_ITEM_TO_USER:
+            //Xử lý item trong game khi item NFT chuyển tới tài khoản của bạn
+            break;
+        case TRANSFER_ITEM_FROM_USER:
+            //Xử lý item trong game khi item NFT của bạn chuyến tời tài khoản khác
+            break;
+    }
+}
+```
+
 </TabItem>
 <TabItem value="2">
-    <div style={{
-    width:'100%',backgroundColor:'#e6ecf5',
-    padding:10,
-    paddingLeft:20,
-    borderRadius:7
- }}>
-    <div>{`func didItemUpdate(_ item: ChainverseItem!, type: Int32) {`}</div> 
-    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{`switch type {`}</div> 
-    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{`case TRANSFER_ITEM_TO_USER.rawValue:`}</div> 
-    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{`//Xử lý item trong game khi item NFT chuyển tới tài khoản của bạn`}</div> 
-    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{`break;`}</div> 
-    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{`case TRANSFER_ITEM_FROM_USER.rawValue:`}</div> 
-    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{`//Xử lý item trong game khi item NFT của bạn chuyến tời tài khoản khác`}</div> 
-    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{`break;`}</div> 
-    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{`}`}</div> 
-    <div>{`}`}</div> 
-    </div>
+
+```angular2html
+func didItemUpdate(_ item: ChainverseItem!, type: Int32) {
+    switch type {
+    case TRANSFER_ITEM_TO_USER.rawValue:
+        //Xử lý item trong game khi item NFT chuyển tới tài khoản của bạn
+        break;
+    case TRANSFER_ITEM_FROM_USER.rawValue:
+        //Xử lý item trong game khi item NFT chuyển tới tài khoản của bạn
+        break;
+    default: break
+        
+    }
+}
+```
+
 </TabItem>
 </Tabs>
 
 #### Full example
-##### Objective C
+
+<Tabs
+defaultValue="1"
+groupId="operating-systems"
+values={[
+{ label: 'Object C', value: '1', },
+{ label: 'Swift', value: '2', },]}>
+<TabItem value="1">
+
 ```
 #import "AppDelegate.h"
 #import "ChainverseSDK.h"
@@ -441,7 +408,9 @@ values={[
 
 ```
 
-##### Swift
+</TabItem>
+<TabItem value="2">
+
 ```
 import UIKit
 @main
@@ -497,6 +466,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ChainverseSDKCallback {
 
 ```
 
+</TabItem>
+</Tabs>
 
 ## License
 

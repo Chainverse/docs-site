@@ -9,7 +9,7 @@ sidebar_position: 2
 
 | Version  | Release Date | Notes |
 | ------------- | ------------- | ------------- |
-| alpha-1.0.1  | 15/08/2021  | Build bản alpha |
+| 1.0.25  | 20/01/2022  | Build bản alpha |
 
 
 ## iOS SDK
