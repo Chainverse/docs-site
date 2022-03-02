@@ -174,7 +174,7 @@ Hàm callback này trả về danh sách các items của một game đang bán 
 
 Bạn sẽ xử lý ITEM trên chợ ở callback này.
 
-**Chú ý**: Vì danh sách được lấy từ database (Off chain) nên các thông tin trên blockchain sẽ không được chính xác. Chính vì vậy, chúng ta cần phải gọi hàm [getNFT](#12-hàm-getnft) để lấy các thông tin đang có trên blockchain.
+**Chú ý**: Vì danh sách được lấy từ database (Off chain) nên các thông tin trên blockchain sẽ không được chính xác. Chính vì vậy, chúng ta cần phải gọi hàm [getNFT](/docs/sdk/android/items#5-hàm-getnft) để lấy các thông tin đang có trên blockchain.
 
 ```
 @Override
@@ -188,7 +188,7 @@ Hàm callback này trả về danh sách các items của user đang sở hữu.
 
 Bạn sẽ xử lý ITEM của user ở callback này.
 
-**Chú ý**: Vì danh sách được lấy từ database (Off chain) nên các thông tin trên blockchain sẽ không được chính xác. Chính vì vậy, chúng ta cần phải gọi hàm [getNFT](#12-hàm-getnft) để lấy các thông tin đang có trên blockchain.
+**Chú ý**: Vì danh sách được lấy từ database (Off chain) nên các thông tin trên blockchain sẽ không được chính xác. Chính vì vậy, chúng ta cần phải gọi hàm [getNFT](/docs/sdk/android/items#5-hàm-getnft) để lấy các thông tin đang có trên blockchain.
 
 ```
 @Override
