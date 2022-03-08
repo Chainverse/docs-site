@@ -19,7 +19,7 @@ maven {
 #### Bước 2: Khai báo dependencies
 
 ```
-implementation 'com.github.Chainverse:android-sdk:1.0.26'
+implementation 'com.github.Chainverse:android-sdk:alpha-v1.0.28'
 ```
 
 ### Config trong file AndroidManifest.xml
@@ -27,6 +27,8 @@ implementation 'com.github.Chainverse:android-sdk:1.0.26'
 Khai báo quyền sử dụng Internet.
 ```
 <uses-permission android:name="android.permission.INTERNET" />
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 ```
 #### Bước 2: Khai báo deeplink
 Khai báo callback deeplink (trong tag activity) để ví Chainverse mở lại app (Khi connect ví).
