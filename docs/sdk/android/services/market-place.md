@@ -4,35 +4,13 @@ sidebar_position: 1
 ---
 
 # Market Place
+
 ## 1. Hàm buyNFT
-Sử dụng hàm này để mua item của game đang bán trên chợ. Thông tin transaction hash sẽ được trả về qua callback [onBuy](/docs/sdk/android/over-view#10-callback-onbuy).
+Hàm này sử dụng để mua item đang bán trên chợ. Hàm này trả về transaction hash. Thông tin transaction hash cũng sẽ được trả về qua callback [onTransact](/docs/sdk/android/over-view#10-callback-ontransact) 
+(Khuyến khích xử lý logic trong hàm này).
 
-Hàm này sử dụng giao diện của sdk.
-
-Nếu bạn muốn sử dụng giao diện riêng thì gọi đến hàm logic [buyNFT](#2-hàm-buynft)
-```
-/**
- * buyNFT
- * @param currency
- * @param listing_id
- * @param price
- * @param isAuction
- * return
- */
-ChainverseSDK.getInstance().buyNFT(String currency, Long listing_id, Double price, boolean isAuction);
-
-//Callback
-@Override
-public void onBuy(String tx) {
-            
-}
-```
-
-## 2. Hàm buyNFT
-Hàm này sử dụng để mua item đang bán trên chợ. Hàm này trả về transaction hash.
-
-**Chú ý**: Nếu bạn mua bằng token, bạn cần phải kiểm tra số lượng token đã approve cho chợ bằng hàm [isApproved (Token)](#4-hàm-isapproved-token).
-sử dụng hàm [approveNFT](#7-hàm-approvenft) để approve token.
+**Chú ý**: Nếu bạn mua bằng token, bạn cần phải kiểm tra số lượng token đã approve cho chợ bằng hàm [isApproved (Token)](#3-hàm-isapproved-token).
+sử dụng hàm [approveNFT](#6-hàm-approvenft) để approve token.
 
 Nếu không approve token trước khi mua, bạn có thể sẽ gặp lỗi sau: **execution reverted: ERC20: transfer amount exceeds allowance**
 ```
@@ -46,11 +24,12 @@ Nếu không approve token trước khi mua, bạn có thể sẽ gặp lỗi sa
 ChainverseSDK.getInstance().buyNFT(String currency, BigInteger listingId, double price);
 ```
 
-## 3. Hàm sellNFT
-Hàm này sử dụng để bán item lên chợ. Hàm này trả về transaction hash.
+## 2. Hàm sellNFT
+Hàm này sử dụng để bán item lên chợ. Hàm này trả về transaction hash. Thông tin transaction hash cũng sẽ được trả về qua callback [onTransact](/docs/sdk/android/over-view#10-callback-ontransact)
+ (Khuyến khích xử lý logic trong hàm này).
 
-**Chú ý**: Nếu bạn muốn bán item lên chợ, bạn cần phải kiểm tra item đó đã được approved cho chợ hay chưa bằng hàm [isApproved (NFT)](#5-hàm-isapproved-nft).
-Sử dụng hàm [approveNFT](#7-hàm-approvenft) để approve item.
+**Chú ý**: Nếu bạn muốn bán item lên chợ, bạn cần phải kiểm tra item đó đã được approved cho chợ hay chưa bằng hàm [isApproved (NFT)](#4-hàm-isapproved-nft).
+Sử dụng hàm [approveNFT](#6-hàm-approvenft) để approve item.
 
 Nếu không approve item trước khi bán, bạn có thể sẽ gặp lỗi sau: **execution reverted: ERC721: transfer caller is not owner nor approved**
 
@@ -66,8 +45,9 @@ Nếu không approve item trước khi bán, bạn có thể sẽ gặp lỗi sa
 ChainverseSDK.getInstance().sellNFT(String nft, BigInteger tokenId, double price, String currency);
 ```
 
-## 4. Hàm isApproved (Token)
-Hàm này sử dụng để lấy số lượng token mà bạn đã approved cho một địa chỉ nào đó.
+## 3. Hàm isApproved (Token)
+Hàm này sử dụng để lấy số lượng token mà bạn đã approved cho một địa chỉ nào đó. Thông tin transaction hash cũng sẽ được trả về qua callback [onTransact](/docs/sdk/android/over-view#10-callback-ontransact)
+(Khuyến khích xử lý logic trong hàm này).
 
 **Chú ý**: Trước khi muốn mua item trên chợ, bạn cần phải approve một lượng token (**không nhỏ hơn giá trị của item**) cho chợ
 
@@ -82,7 +62,7 @@ Hàm này sử dụng để lấy số lượng token mà bạn đã approved ch
 ChainverseSDK.getInstance().isApproved(String token, String owner, String spender);
 ```
 
-## 5. Hàm isApproved (NFT)
+## 4. Hàm isApproved (NFT)
 Hàm này sử dụng để kiểm tra item bạn muốn bán đã được approved cho chợ chưa.
 
 **Chú ý**: Trước khi muốn bán item, bạn phải approve item đó cho chợ.
@@ -97,8 +77,9 @@ Hàm này sử dụng để kiểm tra item bạn muốn bán đã được appr
 ChainverseSDK.getInstance().isApproved(String nft, BigInteger tokenId);
 ```
 
-## 6. Hàm approveToken
-Hàm này sử dụng để approve token cho một địa chỉ. Hàm này trả về transaction hash.
+## 5. Hàm approveToken
+Hàm này sử dụng để approve token cho một địa chỉ. Hàm này trả về transaction hash. Thông tin transaction hash cũng sẽ được trả về qua callback [onTransact](/docs/sdk/android/over-view#10-callback-ontransact)
+(Khuyến khích xử lý logic trong hàm này).
 ```
 /**
  * approveToken
@@ -110,8 +91,9 @@ Hàm này sử dụng để approve token cho một địa chỉ. Hàm này tr�
 ChainverseSDK.getInstance().approveNFT(String token, String spender, double amount);
 ```
 
-## 7. Hàm approveNFT
-Hàm này sử dụng để approve item bạn muốn bán cho chợ. Hàm này trả về transaction hash.
+## 6. Hàm approveNFT
+Hàm này sử dụng để approve item bạn muốn bán cho chợ. Hàm này trả về transaction hash. Thông tin transaction hash cũng sẽ được trả về qua callback [onTransact](/docs/sdk/android/over-view#10-callback-ontransact)
+(Khuyến khích xử lý logic trong hàm này).
 ```
 /**
  * approveNFT
