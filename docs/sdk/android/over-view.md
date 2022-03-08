@@ -178,7 +178,7 @@ Bạn sẽ xử lý ITEM trên chợ ở callback này.
 
 ```
 @Override
-public void onGetListItemMarket(ArrayList<NFT> items) {
+public void onGetListItemMarket(ArrayList<NFT> items, int count) {
 
 }
 ```
@@ -208,14 +208,38 @@ public void onGetDetailItem(NFT nft) {
 ```
 
 
-#### 10. Callback onBuy
-Hàm callback trả về transaction hash(tx) của một giao dịch.
+#### 10. Callback onTransact
+Hàm callback trả về kiểu và transaction hash(tx) của một giao dịch.
 
 Bạn sẽ xử lý tx sau khi giao dịch thành công trên hàm này.
 
+Kiểu dữ liệu [EFunction](/docs/sdk/Reference/Constants#1-efunction)
+
 ```
 @Override
-public void onBuy(String tx) {
+public void onTransact(Constants.EFunction function, String tx) {
+    // TODO
+}
+```
+
+#### 11. Callback onSignMessage
+Hàm callback trả về một message đã kí.
+
+```
+@Override
+public void onSignMessage(String signed) {
+    // TODO
+}
+```
+
+#### 12. Callback onSignTransaction
+Hàm callback trả về kiểu và chữ kí cho giao dịch.
+
+Kiểu dữ liệu [EFunction](/docs/sdk/Reference/Constants#1-efunction)
+
+```
+@Override
+public void onSignTransaction(Constants.EFunction function, String signed) {
     // TODO
 }
 ```
@@ -259,7 +283,7 @@ public void onBuy(String tx) {
             }
 
             @Override
-            public void onGetListItemMarket(ArrayList<NFT> items) {
+            public void onGetListItemMarket(ArrayList<NFT> items, int count) {
 
             }
 
@@ -284,7 +308,17 @@ public void onBuy(String tx) {
             }
             
             @Override
-            public void onBuy(String tx) {
+            public void onSignMessage(String signed) {
+                Log.i("onSignMessage", signed);
+            }
+
+            @Override
+            public void onSignTransaction(Constants.EFunction function, String signed) {
+                Log.i("onSignTransaction", signed);
+            }
+            
+            @Override
+            public void onTransact(Constants.EFunction function, String tx) {
                 LogUtil.log("transasction has", tx)
             }
         });

@@ -32,8 +32,93 @@ Sử dụng hàm này để Hiển thị thông tin ví.
 ChainverseSDK.getInstance().showWalletInfoView();
 ```
 
+## 5. Hàm genMnemonic
+Sử dụng hàm này tạo ra cụm từ để tạo ví.
+```
+/**
+ * 
+ * @param length (128 hoặc 256)
+ * @return
+ */
+ChainverseSDK.getInstance().genMnemonic(int length);
+```
 
-## 5. Hàm logout
+## 6. Hàm importWalletByMnemonic
+Sử dụng hàm này để tạo ví với cụm từ được tạo qua hàm [genMnemonic](#5-hàm-genmnemonic). Hàm này trả về địa chỉ ví.
+```
+/**
+ * 
+ * @param phrase
+ * @return String
+ */
+ChainverseSDK.getInstance().importWalletByMnemonic(String phrase);
+```
+
+## 7. Hàm importWalletByPrivateKey
+Sử dụng hàm này để tạo ví với khoá cá nhân (Private key). Hàm này trả về địa chỉ ví.
+```
+/**
+ * 
+ * @param privateKey
+ * @return String
+ */
+ChainverseSDK.getInstance().importWalletByPrivateKey(String privateKey);
+```
+
+## 8. Hàm isValidMnemonic
+Sử dụng hàm này để kiểm tra định dạng cụm từ tạo ví (mnemonic).
+```
+/**
+ * 
+ * @param phrase
+ * @return boolean
+ */
+ChainverseSDK.getInstance().isValidMnemonic(String phrase);
+```
+
+## 9. Hàm isValidAddress
+Sử dụng hàm này để kiểm tra định dạng địa chỉ ví.
+```
+/**
+ * 
+ * @param address
+ * @return boolean
+ */
+ChainverseSDK.getInstance().isValidAddress(String address);
+```
+
+## 10. Hàm getBalance
+Sử dụng hàm này để lấy số dư native coin của ví.
+```
+/**
+ * 
+ * @return BigDecimal
+ */
+ChainverseSDK.getInstance().isValidAddress();
+```
+
+## 11. Hàm getBalanceToken
+Sử dụng hàm này để lấy số dư token của ví.
+```
+/**
+ * 
+ * @param contractAddress
+ * @return BigDecimal
+ */
+ChainverseSDK.getInstance().getBalanceToken(String contractAddress);
+```
+
+## 12. Hàm getAddress
+Sử dụng hàm này để lấy địa chỉ ví.
+```
+/**
+ * 
+ * @return String
+ */
+ChainverseSDK.getInstance().getAddress(String address);
+```
+
+## 13. Hàm logout
 Gọi hàm này để thực hiện logout. Thông tin được trả về qua callback [onLogout](/docs/sdk/android/over-view#4-callback-onlogout) .
 
 ```
@@ -46,8 +131,8 @@ public void onLogout(String address) {
 }
 ```
 
-## 6. Hàm hứng data được trả về từ ví Chainverse
-Khi connect thành công với ví Chainverse. Chainverse sẽ mở lại app/game thông qua scheme (đã khai báo ở phần Intergrate SDK). Vì vậy cần khai báo các hàm này để Chainverse SDK xử lý dữ liệu được trả về từ ví Chainverse.
+## 14. Hàm hứng data được trả về từ ví ChainVerse
+Khi connect thành công với ví ChainVerse. ChainVerse sẽ mở lại app/game thông qua scheme (đã khai báo ở phần Intergrate SDK). Vì vậy cần khai báo các hàm này để ChainVerse SDK xử lý dữ liệu được trả về từ ví ChainVerse.
 
 ```
 ChainverseSDK.getInstance().onNewIntent(intent);
@@ -65,7 +150,7 @@ protected void onNewIntent(Intent intent) {
 }
 ```
 
-## 7. Hàm setKeepConnect (Tuỳ chọn)
+## 15. Hàm setKeepConnect (Tuỳ chọn)
 Hàm này tuỳ chọn thiết lập trạng thái giữ connect với ví Chainverse (Khi vào lại app không cần phải kết nối lại ví)
 
 true : Giữ trạng thái keep connect.
@@ -75,14 +160,14 @@ false: Không giữ trạng thái keep connect.
 ChainverseSDK.getInstance().setKeepConnect(true);
 ```
 
-## 8. Hàm setScheme
+## 16. Hàm setScheme
 Để config khi connect với ví Chainverse (Ví Chainverse sẽ mở lại app thông qua config này)
 
 ```
 ChainverseSDK.getInstance().setScheme("your-app-scheme://");
 ```
 
-## 9. Hàm getUser
+## 17. Hàm getUser
 Trả về thông tin của user bao gồm : address và signature
 
 ```
@@ -91,14 +176,14 @@ info.getAddress();
 info.getSignature();
 ```
 
-## 10. Hàm isUserConnected
+## 18. Hàm isUserConnected
 Kiểm tra trạng thái connect ví của user. Trả về boolean
 
 ```
 boolean isConnect = ChainverseSDK.getInstance().isUserConnected()
 ```
 
-## 11. Hàm getVersion
+## 19. Hàm getVersion
 Trả về version của SDK
 
 ```

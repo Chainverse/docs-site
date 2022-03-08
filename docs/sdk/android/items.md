@@ -87,7 +87,8 @@ ChainverseSDK.getInstance().getNFT(String nft, BigInteger tokenId);
 ```
 
 ## 6. Hàm transferItem
-Sử dụng hàm này để chuyển item sang địa chỉ ví khác. Hàm này trả về transaction hash.
+Sử dụng hàm này để chuyển item sang địa chỉ ví khác. Hàm này trả về transaction hash. Thông tin transaction hash cũng sẽ được trả về qua callback [onTransact](/docs/sdk/android/over-view#10-callback-ontransact)
+(Khuyến khích xử lý logic trong hàm này).
 
 ```
 /**
