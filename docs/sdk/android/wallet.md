@@ -14,6 +14,7 @@ ChainverseSDK.getInstance().showConnectView();
 ## 2. Hàm connectWithChainverse
 Sử dụng hàm này để kết nối với ví Chainverse, mà không cần hiển thị giao diện.
 
+Lưu ý: Khi kết nối ví thông qua ChainVerse Wallet, mọi hành động giao dịch (Buy, approveToken, approvedNFT...) đều sẽ được trả transaction hash thông qua hàm callback [onTransact](/docs/sdk/android/over-view#10-callback-ontransact)
 ```
 ChainverseSDK.getInstance().connectWithChainverse();
 ```
@@ -50,6 +51,7 @@ Sử dụng hàm này để tạo ví với cụm từ được tạo qua hàm [
  * 
  * @param phrase
  * @return String
+ * @throws Exception
  */
 ChainverseSDK.getInstance().importWalletByMnemonic(String phrase);
 ```
@@ -61,6 +63,7 @@ Sử dụng hàm này để tạo ví với khoá cá nhân (Private key). Hàm 
  * 
  * @param privateKey
  * @return String
+ * @throws Exception
  */
 ChainverseSDK.getInstance().importWalletByPrivateKey(String privateKey);
 ```
@@ -127,7 +130,7 @@ ChainverseSDK.getInstance().logout();
 //Callback
 @Override
 public void onLogout(String address) {
-            
+            connectWithChainverse
 }
 ```
 
