@@ -134,7 +134,26 @@ public void onLogout(String address) {
 }
 ```
 
-## 14. Hàm hứng data được trả về từ ví ChainVerse
+## 14. Hàm signMessage
+Gọi hàm này để kí message. Thông tin được trả về qua callback [onSignMessage](/docs/sdk/android/over-view#11-callback-onsignmessage) .
+
+```
+/**
+  * signMessage
+  *
+  * @param data
+  * @param isPersonal
+  */
+void signMessage(String data, boolean isPersonal);
+
+//Callback
+@Override
+public void onSignMessage(String signed) {
+    // TODO
+}
+```
+
+## 15. Hàm hứng data được trả về từ ví ChainVerse
 Khi connect thành công với ví ChainVerse. ChainVerse sẽ mở lại app/game thông qua scheme (đã khai báo ở phần Intergrate SDK). Vì vậy cần khai báo các hàm này để ChainVerse SDK xử lý dữ liệu được trả về từ ví ChainVerse.
 
 ```
@@ -153,7 +172,7 @@ protected void onNewIntent(Intent intent) {
 }
 ```
 
-## 15. Hàm setKeepConnect (Tuỳ chọn)
+## 16. Hàm setKeepConnect (Tuỳ chọn)
 Hàm này tuỳ chọn thiết lập trạng thái giữ connect với ví Chainverse (Khi vào lại app không cần phải kết nối lại ví)
 
 true : Giữ trạng thái keep connect.
@@ -163,14 +182,14 @@ false: Không giữ trạng thái keep connect.
 ChainverseSDK.getInstance().setKeepConnect(true);
 ```
 
-## 16. Hàm setScheme
+## 17. Hàm setScheme
 Để config khi connect với ví Chainverse (Ví Chainverse sẽ mở lại app thông qua config này)
 
 ```
 ChainverseSDK.getInstance().setScheme("your-app-scheme://");
 ```
 
-## 17. Hàm getUser
+## 18. Hàm getUser
 Trả về thông tin của user bao gồm : address và signature
 
 ```
@@ -179,14 +198,14 @@ info.getAddress();
 info.getSignature();
 ```
 
-## 18. Hàm isUserConnected
+## 19. Hàm isUserConnected
 Kiểm tra trạng thái connect ví của user. Trả về boolean
 
 ```
 boolean isConnect = ChainverseSDK.getInstance().isUserConnected()
 ```
 
-## 19. Hàm getVersion
+## 20. Hàm getVersion
 Trả về version của SDK
 
 ```
