@@ -19,7 +19,7 @@ maven {
 #### Bước 2: Khai báo dependencies
 
 ```
-implementation 'com.github.Chainverse:android-sdk:alpha-v1.0.31'
+implementation 'com.github.Chainverse:android-sdk:alpha-v1.0.33'
 ```
 
 ### Config trong file AndroidManifest.xml
