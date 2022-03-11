@@ -198,14 +198,24 @@ info.getAddress();
 info.getSignature();
 ```
 
-## 19. Hàm isUserConnected
+## 19. Hàm getListCurrencies
+Trả về danh sách [Currency](/docs/sdk/Reference/NFT#currency) game được hỗ trợ.
+
+```
+/**
+ * return ArrayList<Currency>
+ */
+ChainverseSDK.getInstance().getListCurrencies();
+```
+
+## 20. Hàm isUserConnected
 Kiểm tra trạng thái connect ví của user. Trả về boolean
 
 ```
 boolean isConnect = ChainverseSDK.getInstance().isUserConnected()
 ```
 
-## 20. Hàm getVersion
+## 21. Hàm getVersion
 Trả về version của SDK
 
 ```
