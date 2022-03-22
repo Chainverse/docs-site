@@ -55,6 +55,15 @@ Khai báo callback deeplink (trong tag activity) để ví Chainverse mở lại
         </activity>
 ```
 
+**Chú ý**: Từ android 11(API level 30) trở đi, hầu hết các ứng dụng do người dùng cài đặt không hiển thị theo mặc định. Trong manifest, bạn phải khai báo tĩnh ứng dụng nào bạn sẽ nhận thông tin về.
+
+```
+<queries>
+   <!-- Explicit apps you know in advance about: -->
+   <package android:name="org.chainverse"/>
+</queries>
+```
+
 #### Bước 3: Khai báo  ChainverseAcitivty
 Để sử dụng giao diện của SDK
 
