@@ -10,7 +10,7 @@ Sử dụng hàm này để lấy danh sách ITEM của user đang trong game. T
 ```
 ChainverseSDK.getInstance().getItems();
 
-//Callback
+//Callback 
 @Override
 public void onGetItems(ArrayList<ChainverseItem> items) {
             
@@ -26,7 +26,7 @@ Sử dụng hàm này để lấy danh sách ITEM của game đang bán trên ch
  * @param FilterMarket
  * return
  */
-ChainverseSDK.getInstance().getItemOnMarket(FilterMarket filterMarket);
+ChainverseSDK.getInstance().getListItemOnMarket(FilterMarket filterMarket);
 
 //Callback
 @Override
