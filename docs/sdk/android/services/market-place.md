@@ -88,7 +88,7 @@ Hàm này sử dụng để approve token cho một địa chỉ. Hàm này tr�
  * @param amount // số lượng
  * return String
  */
-ChainverseSDK.getInstance().approveNFT(String token, String spender, double amount);
+ChainverseSDK.getInstance().approveToken(String token, String spender, double amount);
 ```
 
 ## 6. Hàm approveNFT
