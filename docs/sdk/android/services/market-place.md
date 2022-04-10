@@ -10,7 +10,7 @@ Hàm này sử dụng để mua item đang bán trên chợ. Hàm này trả v�
 (Khuyến khích xử lý logic trong hàm này).
 
 **Chú ý**: Nếu bạn mua bằng token, bạn cần phải kiểm tra số lượng token đã approve cho chợ bằng hàm [isApproved (Token)](#3-hàm-isapproved-token).
-sử dụng hàm [approveNFT](#6-hàm-approvenft) để approve token.
+sử dụng hàm [approveToken](#6-hàm-approvetoken) để approve token.
 
 Nếu không approve token trước khi mua, bạn có thể sẽ gặp lỗi sau: **execution reverted: ERC20: transfer amount exceeds allowance**
 ```
