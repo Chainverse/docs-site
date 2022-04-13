@@ -100,7 +100,7 @@ Lớp BaseInfo cung cấp thông tin bán cơ bản của một NFT
 | tokenId  | BigInteger  | getTokenId | Id của token | 
 | fee  | int  | getFee | Phí bán trên chợ (Phí cho người bán) |
 
-##STATUS
+## STATUS
 enum STATUS cung cấp trạng thái hiện tại của NFT.
 
 | Name  | Description | 
