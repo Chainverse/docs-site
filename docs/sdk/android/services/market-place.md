@@ -13,6 +13,8 @@ Hàm này sử dụng để mua item đang bán trên chợ. Hàm này trả v�
 sử dụng hàm [approveToken](#5-hàm-approvetoken) để approve token.
 
 Nếu không approve token trước khi mua, bạn có thể sẽ gặp lỗi sau: **execution reverted: ERC20: transfer amount exceeds allowance**
+
+params: [currency](/docs/sdk/Reference/NFT#nft), [listingId](/docs/sdk/Reference/NFT#nft), [price](/docs/sdk/Reference/NFT#nft)
 ```
 /**
  * buyNFT
@@ -33,6 +35,9 @@ Sử dụng hàm [approveNFT](#6-hàm-approvenft) để approve item.
 
 Nếu không approve item trước khi bán, bạn có thể sẽ gặp lỗi sau: **execution reverted: ERC721: transfer caller is not owner nor approved**
 
+Sau khi đăng bán thành công, NFT có thể giao dịch trên blockchain, tuy nhiên NFT vẫn chưa hiển thị ngay trên ChainVerse Market. Để NFT hiển thị trên ChainVerse Market thì cần phải gọi hàm [publishNFT](#7-hàm-publishnft)
+
+params: [nft](/docs/sdk/Reference/NFT#nft), [tokenId](/docs/sdk/Reference/NFT#nft), [price](/docs/sdk/Reference/NFT#nft), [currency](/docs/sdk/Reference/NFT#nft)
 ```
 /**
  * sellNFT
@@ -67,6 +72,8 @@ Hàm này sử dụng để kiểm tra item bạn muốn bán đã được appr
 
 **Chú ý**: Trước khi muốn bán item, bạn phải approve item đó cho chợ.
 
+params: [nft](/docs/sdk/Reference/NFT#nft), [tokenId](/docs/sdk/Reference/NFT#nft)
+
 ```
 /**
  * isApproved
@@ -94,6 +101,8 @@ ChainverseSDK.getInstance().approveToken(String token, String spender, double am
 ## 6. Hàm approveNFT
 Hàm này sử dụng để approve item bạn muốn bán cho chợ. Hàm này trả về transaction hash. Thông tin transaction hash cũng sẽ được trả về qua callback [onTransact](/docs/sdk/android/over-view#10-callback-ontransact)
 (Khuyến khích xử lý logic trong hàm này).
+
+params: [nft](/docs/sdk/Reference/NFT#nft), [tokenId](/docs/sdk/Reference/NFT#nft)
 ```
 /**
  * approveNFT
@@ -102,5 +111,20 @@ Hàm này sử dụng để approve item bạn muốn bán cho chợ. Hàm này 
  * return String
  */
 ChainverseSDK.getInstance().approveNFT(String nft, BigInteger tokenId);
+```
+
+## 7. Hàm publishNFT
+Hàm này sử dụng để publish item của bạn lên ChainVerse Market. Sau khi bán thông qua hàm [sellNFT](/docs/sdk/android/over-view#2-hàm-sellnft) thì NFT đã được bán trên blockchain, tuy nhiên vẫn chưa được hiển thị ở trên ChainVerse Market. Chính vì vậy cần phải gọi hàm **publishNFT**
+
+params: [nft](/docs/sdk/Reference/NFT#nft), [tokenId](/docs/sdk/Reference/NFT#nft), [publishNFT](/docs/sdk/Reference/Actions#1-publishnft)
+
+```
+/**
+ * approveNFT
+ * @param nft
+ * @param tokenId
+ * @param publishNFT
+ */
+ChainverseSDK.getInstance().publishNFT(String nft, BigInteger tokenId, Action.publishNFT publishNFT);
 ```
 
