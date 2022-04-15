@@ -27,7 +27,7 @@ sidebar_position: 1
 
 ## **Transfer item**
 
--   Endpoint: `{webhook_url}/transfer-item`
+-   Endpoint: `{webhook_url}/item-transfer`
 -   Method: `POST`
 -   Headers:
 
