@@ -26,6 +26,8 @@ params: [currency](/docs/sdk/Reference/NFT#nft), [listingId](/docs/sdk/Reference
 ChainverseSDK.getInstance().buyNFT(String currency, BigInteger listingId, double price);
 ```
 
+![buy nft](/img/buyNFT.png)
+
 ## 2. Hàm sellNFT
 Hàm này sử dụng để bán item lên chợ. Hàm này trả về transaction hash. Thông tin transaction hash cũng sẽ được trả về qua callback [onTransact](/docs/sdk/android/over-view#10-callback-ontransact)
  (Khuyến khích xử lý logic trong hàm này).
@@ -34,7 +36,7 @@ Hàm này sử dụng để bán item lên chợ. Hàm này trả về transacti
 Sử dụng hàm [approveNFT](#6-hàm-approvenft) để approve item.
 
 Nếu không approve item trước khi bán, bạn có thể sẽ gặp lỗi sau: **execution reverted: ERC721: transfer caller is not owner nor approved**
-
+__
 Sau khi đăng bán thành công, NFT có thể giao dịch trên blockchain, tuy nhiên NFT vẫn chưa hiển thị ngay trên ChainVerse Market. Để NFT hiển thị trên ChainVerse Market thì cần phải gọi hàm [publishNFT](#7-hàm-publishnft)
 
 params: [nft](/docs/sdk/Reference/NFT#nft), [tokenId](/docs/sdk/Reference/NFT#nft), [price](/docs/sdk/Reference/NFT#nft), [currency](/docs/sdk/Reference/NFT#nft)
@@ -49,6 +51,8 @@ params: [nft](/docs/sdk/Reference/NFT#nft), [tokenId](/docs/sdk/Reference/NFT#nf
  */
 ChainverseSDK.getInstance().sellNFT(String nft, BigInteger tokenId, double price, String currency);
 ```
+
+![sell nft](/img/sellNFT.png)
 
 ## 3. Hàm isApproved (Token)
 Hàm này sử dụng để lấy số lượng token mà bạn đã approved cho một địa chỉ nào đó. Thông tin transaction hash cũng sẽ được trả về qua callback [onTransact](/docs/sdk/android/over-view#10-callback-ontransact)

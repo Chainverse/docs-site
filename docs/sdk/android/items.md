@@ -37,6 +37,8 @@ public void onGetListItemMarket(ArrayList<NFT> items) {
 }
 ```
 
+![Docusaurus logo](/img/get-item-on-market.png)
+
 ## 3. Hàm getMyAsset
 Sử dụng hàm này để lấy danh sách item user đang sở hữu (Kể cả đang được bán trên chợ). Thông tin sẽ được trả về qua callback [onGetMyAssets](/docs/sdk/android/over-view#8-callback-ongetmyassets).
 
