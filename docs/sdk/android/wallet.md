@@ -19,12 +19,16 @@ Lưu ý: Khi kết nối ví thông qua ChainVerse Wallet, mọi hành động g
 ChainverseSDK.getInstance().connectWithChainverse();
 ```
 
+![Docusaurus logo](/img/connect-wallet.png)
+
 ## 3. Hàm showConnectWalletView
 Sử dụng hàm này để tạo ví theo giao diện của SDK.
 
 ```
 ChainverseSDK.getInstance().showConnectWalletView();
 ```
+
+![Docusaurus logo](/img/import-wallet.png)
 
 ## 4. Hàm showWalletInfoView
 Sử dụng hàm này để Hiển thị thông tin ví.
