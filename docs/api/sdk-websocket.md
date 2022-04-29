@@ -16,7 +16,7 @@ sidebar_position: 2
 #### **`JSON Object`**
 
 -   type: `String` ("SDK")
--   signature: `String` (Sign_message("chainverse") with user private key)
+-   signature: `String` (Sign_message("ChainVerse") with user private key)
 -   signature_ethers: `Bool` (Signature with ethers prefix?)
 -   user_address: `String` (User address)
 -   game_address: `String` (Game address)
