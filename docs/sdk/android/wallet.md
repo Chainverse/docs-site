@@ -104,6 +104,8 @@ Sử dụng hàm này để lấy số dư native coin của ví.
 ChainverseSDK.getInstance().isValidAddress();
 ```
 
+![Docusaurus logo](/img/get-balance.png)
+
 ## 11. Hàm getBalanceToken
 Sử dụng hàm này để lấy số dư token của ví.
 ```
@@ -114,6 +116,8 @@ Sử dụng hàm này để lấy số dư token của ví.
  */
 ChainverseSDK.getInstance().getBalanceToken(String contractAddress);
 ```
+
+![Docusaurus logo](/img/get-balance-token.png)
 
 ## 12. Hàm getAddress
 Sử dụng hàm này để lấy địa chỉ ví.
@@ -156,6 +160,8 @@ public void onSignMessage(String signed) {
     // TODO
 }
 ```
+
+![Docusaurus logo](/img/sign-message.png)
 
 ## 15. Hàm hứng data được trả về từ ví ChainVerse
 Khi connect thành công với ví ChainVerse. ChainVerse sẽ mở lại app/game thông qua scheme (đã khai báo ở phần Intergrate SDK). Vì vậy cần khai báo các hàm này để ChainVerse SDK xử lý dữ liệu được trả về từ ví ChainVerse.

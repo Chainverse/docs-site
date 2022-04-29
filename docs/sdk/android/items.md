@@ -18,6 +18,8 @@ public void onGetItems(ArrayList<ChainverseItem> items) {
 }
 ```
 
+![Docusaurus logo](/img/get-items.png)
+
 ## 2. Hàm getListItemOnMarket
 Sử dụng hàm này để lấy danh sách ITEM của game đang bán trên chợ. Thông tin sẽ được trả về qua callback [onGetListItemMarket](/docs/sdk/android/over-view#7-callback-ongetlistitemmarket).
 
@@ -59,6 +61,8 @@ public void onGetMyAssets(ArrayList<NFT> items) {
 }
 ```
 
+![Docusaurus logo](/img/get-my-assets.png)
+
 ## 4. Hàm getDetailNFT
 Sử dụng hàm này để lấy thông tin chi tiết của 1 item (Thông tin này là Off chain). Thông tin sẽ được trả về qua callback [onGetDetailItem](/docs/sdk/android/over-view#9-callback-ongetdetailitem).
 
@@ -81,6 +85,8 @@ public void onGetDetailItem(NFT items) {
 }
 ```
 
+![Docusaurus logo](/img/get-detail.png)
+
 ## 5. Hàm getNFT
 Sử dụng hàm này để lấy thông tin item trên blockchain.
 
@@ -95,6 +101,8 @@ param: [nft](/docs/sdk/Reference/NFT), [tokenId](/docs/sdk/Reference/NFT), [NFT]
  */
 ChainverseSDK.getInstance().getNFT(String nft, BigInteger tokenId);
 ```
+
+![Docusaurus logo](/img/get-nft.png)
 
 ## 6. Hàm transferItem
 Sử dụng hàm này để chuyển item sang địa chỉ ví khác. Hàm này trả về transaction hash. Thông tin transaction hash cũng sẽ được trả về qua callback [onTransact](/docs/sdk/android/over-view#10-callback-ontransact)
