@@ -8,39 +8,93 @@ import TabItem from '@theme/TabItem';
 
 # Ví
 
-## 1. Hàm getItems
-Sử dụng hàm này để lấy danh sách ITEM của user. Thông tin sẽ được trả về qua callback  didGetItems
 
-<Tabs
-defaultValue="1"
-groupId="operating-systems"
-values={[
-{ label: 'Object C', value: '1', },
-{ label: 'Swift', value: '2', },]}>
-<TabItem value="1">
+## 1. Hàm getListItemOnMarket
+Sử dụng hàm này để lấy danh sách ITEM của game đang bán trên chợ. Thông tin sẽ được trả về qua callback [didGetListItemMarket](/docs/sdk/ios/over-view#5-callback-didgetlistitemmarket).
 
-```angular2html
-[[ChainverseSDK shared] getItems];
+
+```
+/*
+ getListItemOnMarket: Hàm này sử dụng để lấy danh sách NFT đang được bán trên chợ
+ @param NSInteger page
+ @param NSInteger pageSize
+ */
+[[ChainverseSDK shared] getListItemOnMarket:page pageSize:pageSize];
 
 //Callback delegate
-- (void)didGetItems:(NSMutableArray *)items{
-    for(ChainverseItem *itemx in items){
-        NSLog(@"TAG %@",itemx.game_address);
-    }
+- (void)didGetListItemMarket:(NSArray<ChainverseNFT> *) items{
+    
 }
 ```
 
-</TabItem>
-<TabItem value="2">
 
-```angular2html
-ChainverseSDK.shared().getItems()
+![Docusaurus logo](/img/get-item-on-market.png)
+
+## 2. Hàm getMyAsset
+Sử dụng hàm này để lấy danh sách item user đang sở hữu (Kể cả đang được bán trên chợ). Thông tin sẽ được trả về qua callback [didGetMyAssets](/docs/sdk/ios/over-view#7-callback-didgetmyassets).
+
+
+```
+[[ChainverseSDK shared] getMyAsset];
 
 //Callback delegate
-func didGetItems(_ items: NSMutableArray!) {
+- (void)didGetMyAssets:(NSArray<ChainverseNFT> *) items{
+   
+}
+```
+
+![Docusaurus logo](/img/get-my-assets.png)
+
+## 3. Hàm getDetailNFT
+Sử dụng hàm này để lấy thông tin chi tiết của 1 item (Thông tin này là Off chain). Thông tin sẽ được trả về qua callback [didGetDetailItem](/docs/sdk/ios/over-view#6-callback-didgetdetailitem).
+
+
+```
+//*
+ getDetailNFT: Hàm này sử dụng để lấy thông tin chi tiết của một NFT (dữ liệu offchain)
+ @param NSString nft
+ @param NSInteger tokenId
+ */
+[[ChainverseSDK shared] getDetailNFT:@"nft" tokenId:tokenId];
+
+//Callback delegate
+- (void)didGetDetailItem:(ChainverseNFT*)item{
+   
+}
+```
+
+![Docusaurus logo](/img/get-detail.png)
+
+## 4. Hàm getNFT
+Sử dụng hàm này để lấy thông tin item trên blockchain.
+
+
+```
+/*
+ getNFT: Hàm này sử dụng để lấy thông tin chi tiết của một NFT (dữ liệu onchain)
+ @param NSString nft
+ @param NSInteger tokenId
+ */
+[[ChainverseSDK shared] getNFT:nft tokenId:tokenId complete:^(ChainverseNFT *item){
+    //Xử lý ở đây    
         
-}
+}];
+
 ```
 
-</TabItem>
-</Tabs>
+![Docusaurus logo](/img/get-nft.png)
+
+## 5. Hàm transferItem
+Sử dụng hàm này để chuyển item sang địa chỉ ví khác. Hàm này trả về transaction hash. Thông tin transaction hash cũng sẽ được trả về qua callback [onTransact](/docs/sdk/ios/over-view#9-callback-didtransact)
+(Khuyến khích xử lý logic trong hàm này).
+
+
+```
+/*
+ transferItem: Hàm này sử dụng để chuyển NFT sang địa chỉ khác
+ @param NSString to
+ @param NSString nft
+ @param NSInteger tokenId
+ */
+[[ChainverseSDK shared] transferItem:@"to" nft:@"nft" tokenId:tokenId];
+```

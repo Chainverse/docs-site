@@ -8,99 +8,28 @@ import TabItem from '@theme/TabItem';
 
 # Ví
 
-## 1. Hàm showConnectView
-Hàm này hiển thị màn hình danh sách các ví để user lựa chọn connect.
+#### 1. Hàm showConnectWalletView
+Hàm này hiển thị màn hình để tạo hoặc import ví. 
 
-<Tabs
-defaultValue="1"
-groupId="operating-systems"
-values={[
-{ label: 'Object C', value: '1', },
-{ label: 'Swift', value: '2', },]}>
-<TabItem value="1">
-
-```angular2html
-[[ChainverseSDK shared] showConnectView];
+##### Objective C
 ```
-</TabItem>
-<TabItem value="2">
-
-```angular2html
-ChainverseSDK.shared().showConnectView()
+[[ChainverseSDK shared] showConnectWalletView];
 ```
-</TabItem>
-</Tabs>
 
-## 2. Hàm connectWithChainverse
-Sử dụng hàm này để kết nối với ví Chainverse, mà không cần hiển thị giao diện.
 
-<Tabs
-defaultValue="1"
-groupId="operating-systems"
-values={[
-{ label: 'Object C', value: '1', },
-{ label: 'Swift', value: '2', },]}>
-<TabItem value="1">
+#### 2. Hàm showWalletInfoView
+Hàm này hiển thị màn hình thông tin của ví. Bao gồm các chức năng: Export private key, Secret Recovery Phrase.
 
-```angular2html
-[[ChainverseSDK shared] connectWithChainverse];
+##### Objective C
 ```
-</TabItem>
-<TabItem value="2">
-
-```angular2html
-ChainverseSDK.shared().connectWithChainverse()
+[[ChainverseSDK shared] showWalletInfoView];
 ```
-</TabItem>
-</Tabs>
 
-## 3. Hàm getItems
-Sử dụng hàm này để lấy danh sách ITEM của user. Thông tin sẽ được trả về qua callback didGetItems.
-
-<Tabs
-defaultValue="1"
-groupId="operating-systems"
-values={[
-{ label: 'Object C', value: '1', },
-{ label: 'Swift', value: '2', },]}>
-<TabItem value="1">
-
-```angular2html
-[[ChainverseSDK shared] getItems];
-
-//Callback delegate
-- (void)didGetItems:(NSMutableArray *)items{
-    for(ChainverseItem *itemx in items){
-        NSLog(@"TAG %@",itemx.game_address);
-    }
-}
-```
-</TabItem>
-<TabItem value="2">
-
-```angular2html
-ChainverseSDK.shared().getItems()
-
-//Callback delegate
-func didGetItems(_ items: NSMutableArray!) {
-
-}
-```
-</TabItem>
-</Tabs>
-
-## 4. Hàm logout
+#### 3. Hàm logout
 Gọi hàm này để thực hiện logout. Thông tin được trả về qua callback didLogout .
 
-<Tabs
-defaultValue="1"
-groupId="operating-systems"
-values={[
-{ label: 'Object C', value: '1', },
-{ label: 'Swift', value: '2', },]}>
-<TabItem value="1">
-
-```angular2html
+##### Objective C
+```
 [[ChainverseSDK shared] logout];
 
 //Delegate callback
@@ -109,32 +38,13 @@ values={[
 }
 
 ```
-</TabItem>
-<TabItem value="2">
 
-```angular2html
-ChainverseSDK.shared().logout()
-//callback
-func didLogout(_ address: String!) {
-       
-}
-```
-</TabItem>
-</Tabs>
-
-## 5. Hàm hứng data được trả về từ ví  Chainverse
+#### 4. Hàm hứng data được trả về từ ví  Chainverse
 Khi connect thành công với ví Chainverse. Chainverse sẽ mở lại app/game thông qua scheme (đã khai báo ở phần Intergrate SDK). Vì vậy cần khai báo các hàm này để Chainverse SDK xử lý dữ liệu được trả về từ ví Chainverse.
 Khai báo ở file AppDeletegate :
 
-<Tabs
-defaultValue="1"
-groupId="operating-systems"
-values={[
-{ label: 'Object C', value: '1', },
-{ label: 'Swift', value: '2', },]}>
-<TabItem value="1">
-
-```angular2html
+##### Objective C
+```
 [[ChainverseSDK shared] handleOpenUrl:(UIApplication *)app
                               openURL:(NSURL *)url
                               options:(NSDictionary<UIApplicationOpenURLOptionsKey, id> *)options];
@@ -143,108 +53,66 @@ values={[
 
 [[ChainverseSDK shared] handleOpenUrl:scene openURLContexts:URLContexts];
 ```
-</TabItem>
-<TabItem value="2">
 
-```angular2html
-ChainverseSDK.shared().handleOpenUrl(app, open: url, options: options)
-```
-</TabItem>
-</Tabs>
 
-## 6. Hàm setKeepConnect
-Hàm này tuỳ chọn thiết lập trạng thái giữ connect với ví Chainverse (Khi vào lại app không cần phải kết nối lại ví)
+#### 5. Hàm setKeepConnect
+Hàm này tuỳ chọn thiết lập trạng thái giữ connect với ví Chainverse (Khi vào lại app không cần phải kết nối lại ví) 
 *true : Giữ trạng thái keep connect.
 *false: Không giữ trạng thái keep connect.
 
-<Tabs
-defaultValue="1"
-groupId="operating-systems"
-values={[
-{ label: 'Object C', value: '1', },
-{ label: 'Swift', value: '2', },]}>
-<TabItem value="1">
-
-```angular2html
+##### Objective C
+```
 [[ChainverseSDK shared] setKeepConnect:TRUE];
-```
-</TabItem>
-<TabItem value="2">
 
-```angular2html
-ChainverseSDK.shared().setKeepConnect(true)
 ```
-</TabItem>
-</Tabs>
 
-## 7. Hàm getVersion
+
+#### 6. Hàm getVersion
 Trả về version của SDK
 
-<Tabs
-defaultValue="1"
-groupId="operating-systems"
-values={[
-{ label: 'Object C', value: '1', },
-{ label: 'Swift', value: '2', },]}>
-<TabItem value="1">
-
-```angular2html
+##### Objective C
+```
 [[ChainverseSDK shared] getVersion]
-```
-</TabItem>
-<TabItem value="2">
 
-```angular2html
-ChainverseSDK.shared().getVersion()
 ```
-</TabItem>
-</Tabs>
 
-## 7. Hàm getUser
+
+#### 7. Hàm getUser
 Trả về thông tin của user bao gồm : address và signature
 
-<Tabs
-defaultValue="1"
-groupId="operating-systems"
-values={[
-{ label: 'Object C', value: '1', },
-{ label: 'Swift', value: '2', },]}>
-<TabItem value="1">
-
-```angular2html
+##### Objective C
+```
 ChainverseUser *info = [[ChainverseSDK shared] getUser];
 NSLog(@"TAG %@",[info address]);
 NSLog(@"TAG %@",[info signature]);
 ```
-</TabItem>
-<TabItem value="2">
 
-```angular2html
-let info: ChainverseUser = ChainverseSDK.shared().getUser()
-```
-</TabItem>
-</Tabs>
 
-## 8. Hàm isUserConnected
+#### 8. Hàm isUserConnected
 Kiểm tra trạng thái connect ví của user. Trả về boolean
 
-<Tabs
-defaultValue="1"
-groupId="operating-systems"
-values={[
-{ label: 'Object C', value: '1', },
-{ label: 'Swift', value: '2', },]}>
-<TabItem value="1">
-
-```angular2html
+##### Objective C
+```
 [[ChainverseSDK shared] isUserConnected];
-```
-</TabItem>
-<TabItem value="2">
 
-```angular2html
-ChainverseSDK.shared().isUserConnected()
 ```
-</TabItem>
-</Tabs>
 
+#### 10. Hàm getBalance
+Trả về số dư Native Coin (BNB)
+
+##### Objective C
+```
+[[ChainverseSDK shared] getBalance]
+
+```
+
+#### 11. Hàm getBalance
+Trả về số dư token:
+- CVT: 0x672021e3c741910896cad6D6121446a328ba5634
+- USDT: 0x337610d27c682E347C9cD60BD4b3b107C9d34dDd
+
+##### Objective C
+```
+[[ChainverseSDK shared] getBalance:{token}]
+
+```
