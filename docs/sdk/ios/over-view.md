@@ -8,7 +8,6 @@ import TabItem from '@theme/TabItem';
 
 # Chainverse SDK for iOS
 
-## Cài đặt
 ### Cài đặt thủ công
 #### Bước 1: Tải xuống static framework
 Tải xuống ChainverseSDK_Framework.zip tại https://github.com/Chainverse/ios-sdk/releases
@@ -23,9 +22,10 @@ PromiseKit.xcframework
 SipHash.xcframework
 Starscream.xcframework
 SocketIO.xcframework
+secp256k1.xcframework
 ```
 #### Bước 3: Import vào dự án
-Kéo tất cả những file đã giải nén ở Bước 2 vào dự án của bạn
+Kéo tất cả những file đã giải nén ở Bước 2 vào dự án của bạn 
 
 #### Bước 4. Embed framework
 Chọn Embed & Sign đối với :
@@ -36,19 +36,32 @@ PromiseKit.xcframework
 SipHash.xcframework
 Starscream.xcframework
 SocketIO.xcframework
+secp256k1.xcframework
 ```
 
-![Docusaurus logo](https://gblobscdn.gitbook.com/assets%2F-MfegUcnHBLzXgHaEQpA%2F-MgoqNIb4BqdRSM7M3u5%2F-MgoqPBPaQXXKWWgCoJb%2FScreen%20Shot%202021-08-11%20at%2017.53.58.png?alt=media&token=615fd852-fb3c-4900-90e7-2c6585f42963)
+![Docusaurus logo](https://i.imgur.com/5umw9yI.png)
+
+#### Bước 5: Tạo Bridging Header
+- File -> New -> File
+- Select Swift File
+- Tạo 1 file .swift với tên bất kì.
+
+![Docusaurus logo](https://i.imgur.com/Wulhemz.png)
 
 
-#### Bước 5:  Thiết lập Url scheme
+- Confirm Create Bridging Header .
+
+![Docusaurus logo](https://i.imgur.com/5Yr786R.png)
+
+
+#### Bước 6:  Thiết lập Url scheme
 Bạn cần thiết lập Url scheme để  connect với ví Chainverse
 
 ![Docusaurus logo](https://i.imgur.com/otRESxJ.png)
 
 
-####  Bước 6. Config Application Schemes
-Bạn phải thiết lập "chainverse" trong file Info.Plist để connect với ví Chainverse.
+####  Bước 7. Config Application Schemes
+Bạn phải thiết lập "chainverse" trong file Info.Plist để connect với ví Chainverse. 
 
 ```
 <key>LSApplicationQueriesSchemes</key>
@@ -68,50 +81,28 @@ Tài liệu này chứa các tham số bắt buộc. Bạn phải đảm bảo k
 3. "App Scheme": Khai báo scheme để connect Chainverse.
 
 ### Khởi tạo Chainverse SDK
-#### Bước 1: Import dependencies
-Import Chainverse và ChainverseSDKCallback to AppDelegate
+#### Bước 1: Import dependencies 
+Import Chainverse và ChainverseSDKCallback to AppDelegate 
 
-<Tabs
-defaultValue="1"
-groupId="operating-systems"
-values={[
-{ label: 'Object C', value: '1', },
-{ label: 'Swift', value: '2', },]}>
-<TabItem value="1">
-
-```angular2html
+##### Objective C
+```
 #import "Chainverse/ChainverseSDK.h"
 #import "Chainverse/ChainverseSDKCallback.h"
 #import "Chainverse/ChainverseItem.h"
+#import "Chainverse/ChainverseNFT.h"
+#import "Chainverse/ChainverseSDKError.h"
 
 @interface AppDelegate () <ChainverseSDKCallback>
 
 @end
 ```
 
-</TabItem>
-<TabItem value="2">
-
-```angular2html
-class AppDelegate: ChainverseSDKCallback {
-}
-```
-
-</TabItem>
-</Tabs>
 
 #### Bướ​c 2: Khởi tạo SDK
 Trong didFinishLaunchingWithOptions khai báo Game Contract Address và Developer Contract Address
 
-<Tabs
-defaultValue="1"
-groupId="operating-systems"
-values={[
-{ label: 'Object C', value: '1', },
-{ label: 'Swift', value: '2', },]}>
-<TabItem value="1">
-
-```angular2html
+##### Objective C
+```
 [ChainverseSDK shared].developerAddress = @"DeveloperAddress";
 [ChainverseSDK shared].gameAddress = @"GameAddress";
 [ChainverseSDK shared].scheme = @"your-app-scheme://";
@@ -119,234 +110,158 @@ values={[
 [[ChainverseSDK shared] initialize];
 ```
 
-</TabItem>
-<TabItem value="2">
-
-```angular2html
-ChainverseSDK.shared().developerAddress = "DeveloperAddress"
-ChainverseSDK.shared().gameAddress = "GameAddress"
-ChainverseSDK.shared().scheme = "your-app-scheme://";
-ChainverseSDK.shared().delegate = self
-ChainverseSDK.shared().initialize()
-```
-
-</TabItem>
-</Tabs>
-
 #### Bước 3: Implement các hàm callback
 #### 1. Callback didInitSDKSuccess
 Khi khởi tạo SDK callback sẽ được gửi lại, để thông báo là đã khởi tạo thành công.
 
 Lưu ý: Các chức năng trong SDK sẽ không được thực thi, nếu quá trình khởi tạo SDK bị lỗi. Và không có callback didInitSDKSuccess. Mã lỗi sẽ được callback ở hàm didError.
 
-<Tabs
-defaultValue="1"
-groupId="operating-systems"
-values={[
-{ label: 'Object C', value: '1', },
-{ label: 'Swift', value: '2', },]}>
-<TabItem value="1">
-
-```angular2html
+##### Objective C
+```
 - (void)didInitSDKSuccess{ 
 }
 ```
 
-</TabItem>
-<TabItem value="2">
-
-```angular2html
-func didInitSDKSuccess() {
-}
-```
-
-</TabItem>
-</Tabs>
 
 #### 2. Callback didError
 Khi khởi tạo SDK hoặc có bất kỳ lỗi nào xả ra sẽ có callback này. Thông tin trả về là mã lỗi. Bạn có thể xem tất cả mã lỗi ở trang Error  Codes .
 
-<Tabs
-defaultValue="1"
-groupId="operating-systems"
-values={[
-{ label: 'Object C', value: '1', },
-{ label: 'Swift', value: '2', },]}>
-<TabItem value="1">
-
-```angular2html
+##### Objective C
+```
 - (void)didError:(int)error{
     
 }
 ```
 
-</TabItem>
-<TabItem value="2">
-
-```angular2html
-func didError(_ error: Int32) {
-       
-}
-```
-
-</TabItem>
-</Tabs>
 
 #### 3. Callback didConnectSuccess
-Khi user connect tới ví Chainverse thành công thì sẽ có callback này. Thông tin trả về là địa chỉ ví của user.
+Khi user connect tới ví Chainverse thành công thì sẽ có callback này. Thông tin trả về là địa chỉ ví của user. 
 
-<Tabs
-defaultValue="1"
-groupId="operating-systems"
-values={[
-{ label: 'Object C', value: '1', },
-{ label: 'Swift', value: '2', },]}>
-<TabItem value="1">
-
-```angular2html
+##### Objective C
+```
 - (void)didConnectSuccess:(NSString *)address{
     
 }
 ```
 
-</TabItem>
-<TabItem value="2">
-
-```angular2html
-func didConnectSuccess(_ address: String!) {
-
-}
-```
-
-</TabItem>
-</Tabs>
 
 #### 4. Callback didLogout
-Khi user thực hiện thao tác đăng xuất callback này sẽ được gọi. Thông tin trả về là địa chỉ ví của user.
+Khi user thực hiện thao tác đăng xuất callback này sẽ được gọi. Thông tin trả về là địa chỉ ví của user. 
 
-<Tabs
-defaultValue="1"
-groupId="operating-systems"
-values={[
-{ label: 'Object C', value: '1', },
-{ label: 'Swift', value: '2', },]}>
-<TabItem value="1">
-
-```angular2html
+##### Objective C
+```
 - (void)didLogout:(NSString *)address{
    
 }
 ```
 
-</TabItem>
-<TabItem value="2">
 
-```angular2html
-func didLogout(_ address: String!) {
+#### 5. Callback didGetListItemMarket
 
+Khi hàm `[[ChainverseSDK shared] getListItemOnMarket];` callback này sẽ trả về danh sách NFT trong chợ.
+
+Bạn sẽ xử lý NFT trong chợ của bạn ở callback này.
+
+##### Objective C
+```
+- (void)didGetListItemMarket:(NSArray<ChainverseNFT> *) items{
+    
 }
 ```
 
-</TabItem>
-</Tabs>
+#### 6. Callback didGetDetailItem
 
-#### 5. Callback didGetItems
+Khi hàm gọi `[[ChainverseSDK shared] getDetailNFT:{nft_address} tokenId:{tokenId}];` callback này sẽ trả về thông tin detail của NFT.
 
-Khi hàm `[[ChainverseSDK shared] getItems];` callback này sẽ trả về thông tin là danh sách ITEM của user đó. Và khi​ chuyển Item NFT qua lại giữa user - user trong 1 game, và chuyển từ game này sang game kia. Callback này sẽ được gọi REALTIME.
+Bạn sẽ xử lý NFT trong chợ của bạn ở callback này.
 
-Bạn sẽ xử lý ITEM trong game của bạn ở callback này.
-
-<Tabs
-defaultValue="1"
-groupId="operating-systems"
-values={[
-{ label: 'Object C', value: '1', },
-{ label: 'Swift', value: '2', },]}>
-<TabItem value="1">
-
-```angular2html
-- (void)didGetItems:(NSMutableArray *)items{
-    for(ChainverseItem *itemx in items){
-        NSLog(@"TAG %@",itemx.game_address);
-    }
+##### Objective C
+```
+- (void)didGetDetailItem:(ChainverseNFT*)item{
+    
 }
 ```
 
-</TabItem>
-<TabItem value="2">
 
-```angular2html
-func didGetItems(_ items: NSMutableArray!) {
-       
+#### 7. Callback didGetMyAssets
+
+Khi hàm gọi `[[ChainverseSDK shared] getMyAsset];` callback này sẽ trả về danh sách NFT của user
+
+Bạn sẽ xử lý NFT của bạn ở callback này.
+
+##### Objective C
+```
+- (void)didGetMyAssets:(NSArray<ChainverseNFT> *) items{
+    
 }
 ```
-</TabItem>
-</Tabs>
 
-#### 6. Callback didItemUpdate
 
-Khi​ chuyển Item NFT qua lại giữa user - user trong 1 game, và chuyển từ game này sang game kia. Callback này sẽ được gọi REALTIME. Thông tin trả về là 01 ITEM đã move.
+#### 8. Callback didItemUpdate
 
-Bạn sẽ xử lý ITEM trong game của bạn ở callback này.
+Khi​ chuyển NFT qua lại giữa user - user trong 1 game, và chuyển từ game này sang game kia. Callback này sẽ được gọi REALTIME. Thông tin trả về là 01 NFT đã move.
 
-<Tabs
-defaultValue="1"
-groupId="operating-systems"
-values={[
-{ label: 'Object C', value: '1', },
-{ label: 'Swift', value: '2', },]}>
-<TabItem value="1">
+Bạn sẽ xử lý NFT trong game của bạn ở callback này.
 
-```angular2html
+##### Objective C
+```
 - (void)didItemUpdate:(ChainverseItem *)item type:(int)type{
     switch (type) {
         case TRANSFER_ITEM_TO_USER:
-            //Xử lý item trong game khi item NFT chuyển tới tài khoản của bạn
+            //Xử lý NFT trong game khi NFT chuyển tới tài khoản của bạn
             break;
         case TRANSFER_ITEM_FROM_USER:
-            //Xử lý item trong game khi item NFT của bạn chuyến tời tài khoản khác
+            //Xử lý NFT trong game khi NFT của bạn chuyến tời tài khoản khác
             break;
     }
 }
 ```
 
-</TabItem>
-<TabItem value="2">
 
-```angular2html
-func didItemUpdate(_ item: ChainverseItem!, type: Int32) {
-    switch type {
-    case TRANSFER_ITEM_TO_USER.rawValue:
-        //Xử lý item trong game khi item NFT chuyển tới tài khoản của bạn
-        break;
-    case TRANSFER_ITEM_FROM_USER.rawValue:
-        //Xử lý item trong game khi item NFT chuyển tới tài khoản của bạn
-        break;
-    default: break
-        
-    }
+#### 9. Callback didTransact
+
+Callback này sẽ trả về transaction hash và function khi thực hiện các chức năng blockchain
+
+
+##### Objective C
+```
+- (void)didTransact:(int)function tx:(NSString *)tx{
+   //Các function
+   /*
+     approveToken = 1,
+     approveNFT = 2,
+     buyNFT = 3,
+     bidNFT = 4,
+     sellNFT = 5,
+     cancelSell = 6,
+     withdrawItem = 7,
+     moveService = 8,
+     transferItem = 9*/
+    
 }
 ```
 
-</TabItem>
-</Tabs>
+#### 10. Callback didSignMessage
+
+Khi gọi hàm  `[[ChainverseSDK shared] signMessage:@"message_can_ki"]` Callback này sẽ trả về chữ ký của message cần ký
+
+
+##### Objective C
+```
+- (void)didSignMessage:(NSString *)signedMessage{
+    
+}
+```
 
 #### Full example
-
-<Tabs
-defaultValue="1"
-groupId="operating-systems"
-values={[
-{ label: 'Object C', value: '1', },
-{ label: 'Swift', value: '2', },]}>
-<TabItem value="1">
-
+##### Objective C
 ```
 #import "AppDelegate.h"
-#import "ChainverseSDK.h"
-#import "ChainverseSDKCallback.h"
-#import "ChainverseSDKError.h"
-#import "ChainverseItem.h"
+#import "Chainverse/ChainverseSDK.h"
+#import "Chainverse/ChainverseSDKCallback.h"
+#import "Chainverse/ChainverseItem.h"
+#import "Chainverse/ChainverseNFT.h"
+#import "Chainverse/ChainverseSDKError.h"
 @interface AppDelegate ()<ChainverseSDKCallback>
 
 @end
@@ -368,29 +283,66 @@ values={[
 }
 
 - (void)didInitSDKSuccess{
-    [[ChainverseSDK shared] getItems];
+    
 }
 
 - (void)didConnectSuccess:(NSString *)address{
     
+    ChainverseUser *info = [[ChainverseSDK shared] getUser];
+    NSLog(@"nampv_caddress %@",[info address]);
+    NSLog(@"nampv_csign %@",[info signature]);
 }
 
 - (void)didLogout:(NSString *)address{
+    
    
 }
 
 - (void)didError:(int)error{
+    switch (error) {
+        case ERROR_WAITING_INIT_SDK:
+            
+            break;
+            
+        default:
+            break;
+    }
     NSLog(@"didError %d",error);
 }
 
-- (void)didGetItems:(NSMutableArray *)items{
-    for(ChainverseItem *itemx in items){
-        NSLog(@"didGetItems %@",itemx.game_address);
+
+- (void)didGetDetailItem:(ChainverseNFT*)item{
+   
+}
+
+- (void)didItemUpdate:(ChainverseItem *)item type:(int)type{
+    switch (type) {
+        case TRANSFER_ITEM_TO_USER:
+            //Xử lý item trong game khi item NFT chuyển tới tài khoản của bạn
+            NSLog(@"nampv_transfer_to %@",item);
+            break;
+        case TRANSFER_ITEM_FROM_USER:
+            //Xử lý item trong game khi item NFT của bạn chuyến tời tài khoản khác
+            NSLog(@"nampv_transfer_from %@",item);
+            break;
     }
 }
 
-- (void)didItemUpdate:(ChainverseItem *)item{
-    NSLog(@"TAG %@",item.game_address);
+- (void)didSignMessage:(NSString *)signedMessage{
+    
+}
+
+- (void)didGetListItemMarket:(NSArray<ChainverseNFT> *) items{
+    
+}
+
+- (void)didGetMyAssets:(NSArray<ChainverseNFT> *) items{
+    
+}
+
+- (void)didTransact:(int)function tx:(NSString *)tx{
+    
+    
 }
 
 - (BOOL)application:(UIApplication *)app
@@ -408,82 +360,21 @@ values={[
 
 ```
 
-</TabItem>
-<TabItem value="2">
-
-```
-import UIKit
-@main
-class AppDelegate: UIResponder, UIApplicationDelegate, ChainverseSDKCallback {
-    func didInitSDKSuccess() {
-       
-    }
-    
-    func didError(_ error: Int32) {
-       
-    }
-    
-    func didConnectSuccess(_ address: String!) {
-        ChainverseSDK.shared().getItems()
-    }
-    
-    func didLogout(_ address: String!) {
-       
-    }
-    
-    func didGetItems(_ items: NSMutableArray!) {
-        
-    }
-    
-    func didItemUpdate(_ item: ChainverseItem!, type: Int32) {
-        switch type {
-        case TRANSFER_ITEM_TO_USER.rawValue:
-            //Xử lý item trong game khi item NFT chuyển tới tài khoản của bạn
-            break;
-        case TRANSFER_ITEM_FROM_USER.rawValue:
-            //Xử lý item trong game khi item NFT chuyển tới tài khoản của bạn
-            break;
-        default: break
-            
-        }
-    }
-    
-
-
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        ChainverseSDK.shared().developerAddress = "0x9aa2DC5A69eEd97d072A4168A83Cc000873321ff"
-        ChainverseSDK.shared().gameAddress = "0xD703d36e924A84D050F7b17f392F7d6D2Dd483AF"
-        ChainverseSDK.shared().scheme = "your-app-scheme://"
-        ChainverseSDK.shared().delegate = self;
-        ChainverseSDK.shared().initialize()
-        ChainverseSDK.shared().setKeepConnect(true)
-        return true
-    }
-
-
-}
-
-```
-
-</TabItem>
-</Tabs>
-
 ## License
 
 Chainverse SDK iOS sử dụng những thư viện sau:
 ##### 1. AFNetworking
 - License: MIT License
 - Home page: https://github.com/AFNetworking/AFNetworking
-- Mục đích sử dụng: Để kết nối REST (API), Kết nối blockchain
+- Mục đích sử dụng: Để kết nối REST (API)
 ##### 2. Socket io
 - License: MIT License
 - Home page: https://socket.io/
 - Mục đích sử dụng: Xử lý realtime
-##### 3. Web3swift (Sử dụng 1 phần)
+##### 3. Web3swift 
 - License: MIT License
-- Home page: https://bankex.github.io/web3swift/
-- Mục đích sử dụng: Sử dụng các hàm băm, encode các (function, param) trước khi gọi lên blockchain (qua AFNetworking)
+- Home page: https://github.com/skywinder/web3swift
+- Mục đích sử dụng: Kết nối blockchain
 ##### 4. PromiseKit
 - License: MIT License
 - Home page: https://github.com/mxcl/PromiseKit
