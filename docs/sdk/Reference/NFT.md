@@ -75,7 +75,7 @@ Lớp Auction cung cấp thông tin đấu giá của NFT (nếu có). Lớp nà
 | Name  | Type | Method | Description | 
 | ------------- | ------------- | ------------- | ------------- |
 | winner  | String  | getWinner | Địa chỉ người đang đấu giá thắng | 
-| bid  | String  | getBid | Số tiền lớn nhất đang được đấu giá | 
+| bid  | double  | getBid | Số tiền lớn nhất đang được đấu giá | 
 | chain_id  | BigInteger  | getChainId | Chain id của network | 
 | duration  | BigInteger  | getDuration | Thời gian đấu giá còn lại (Timestamp) | 
 | end  | BigInteger  | getEnd | Thời gian kết thúc đấu giá (Timestapm) | 
@@ -85,7 +85,7 @@ Lớp Listing cung cấp thông tin bán của NFT (nếu có). Lớp này đư�
 
 | Name  | Type | Method | Description | 
 | ------------- | ------------- | ------------- | ------------- |
-| price  | BigInteger  | getPrice | Giá bán của item (dùng cho param **price** của hàm [buy](/docs/sdk/android/services/market-place#2-hàm-buynft)) | 
+| price  | double  | getPrice | Giá bán của item (dùng cho param **price** của hàm [buy](/docs/sdk/android/services/market-place#2-hàm-buynft)) | 
 
 ## BaseInfo
 Lớp BaseInfo cung cấp thông tin bán cơ bản của một NFT

@@ -21,7 +21,7 @@ params: [currency](/docs/sdk/Reference/NFT#nft), [listingId](/docs/sdk/Reference
  * @param currency
  * @param listingId
  * @param price
- * return String
+ * return
  */
 ChainverseSDK.getInstance().buyNFT(String currency, BigInteger listingId, double price);
 ```
@@ -47,7 +47,7 @@ params: [nft](/docs/sdk/Reference/NFT#nft), [tokenId](/docs/sdk/Reference/NFT#nf
  * @param tokenId
  * @param price
  * @param currency
- * return String
+ * return
  */
 ChainverseSDK.getInstance().sellNFT(String nft, BigInteger tokenId, double price, String currency);
 ```
@@ -66,7 +66,7 @@ Hàm này sử dụng để lấy số lượng token mà bạn đã approved ch
  * @param token //địa chỉ token
  * @param owner // địa chỉ chủ sở hữu
  * @param spender // địa chỉ đã được approved
- * return BigInteger
+ * return double
  */
 ChainverseSDK.getInstance().isApproved(String token, String owner, String spender);
 ```
@@ -97,7 +97,7 @@ Hàm này sử dụng để approve token cho một địa chỉ. Hàm này tr�
  * @param token // địa chỉ token
  * @param spender // địa chỉ sẽ được approved
  * @param amount // số lượng
- * return String
+ * return
  */
 ChainverseSDK.getInstance().approveToken(String token, String spender, double amount);
 ```
@@ -112,7 +112,7 @@ params: [nft](/docs/sdk/Reference/NFT#nft), [tokenId](/docs/sdk/Reference/NFT#nf
  * approveNFT
  * @param nft
  * @param tokenId
- * return String
+ * return
  */
 ChainverseSDK.getInstance().approveNFT(String nft, BigInteger tokenId);
 ```
@@ -128,6 +128,7 @@ params: [nft](/docs/sdk/Reference/NFT#nft), [tokenId](/docs/sdk/Reference/NFT#nf
  * @param nft
  * @param tokenId
  * @param publishNFT
+ * return
  */
 ChainverseSDK.getInstance().publishNFT(String nft, BigInteger tokenId, Action.publishNFT publishNFT);
 ```

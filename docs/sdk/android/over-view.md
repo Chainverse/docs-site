@@ -19,7 +19,7 @@ maven {
 #### Bước 2: Khai báo dependencies
 
 ```
-implementation 'com.github.Chainverse:android-sdk:alpha-v1.0.33'
+implementation 'com.github.Chainverse:android-sdk:alpha-v1.0.39'
 ```
 
 ### Config trong file AndroidManifest.xml
@@ -255,6 +255,18 @@ public void onSignTransaction(Constants.EFunction function, String signed) {
 }
 ```
 
+#### 12. Callback onErrorTransaction
+Hàm callback trả về lỗi khi giao dịch.
+
+Kiểu dữ liệu [EFunction](/docs/sdk/Reference/Constants#1-efunction)
+
+```
+@Override
+public void onErrorTransaction(Constants.EFunction function, String error) {
+    // TODO
+}
+```
+
 ## Full example
 
 
@@ -265,13 +277,14 @@ public void onSignTransaction(Constants.EFunction function, String signed) {
 
             @Override
             public void onInitSDKSuccess() {
-
+                // TODO
             }
 
             @Override
             public void onError(int error) {
                 switch (error){
                     case ChainverseError.ERROR_INIT_SDK:
+                           // TODO
                         break;
                 }
 
@@ -279,60 +292,67 @@ public void onSignTransaction(Constants.EFunction function, String signed) {
 
             @Override
             public void onItemUpdate(ChainverseItem item, int type) {
-                LogUtil.log("onItemUpdate",item);
                 switch (type){
                     case ChainverseItem.TRANSFER_ITEM_TO_USER:
+                            // TODO
                         break;
                     case ChainverseItem.TRANSFER_ITEM_FROM_USER:
+                            // TODO
                         break;
                 }
             }
 
             @Override
             public void onGetItems(ArrayList<ChainverseItem> items) {
-                LogUtil.log("onGetItems",items);
+                // TODO
             }
 
             @Override
             public void onGetListItemMarket(ArrayList<NFT> items, int count) {
-
+                // TODO
             }
 
             @Override
             public void onGetMyAssets(ArrayList<NFT> items) {
-
+                // TODO
             }
 
             @Override
             public void onGetDetailItem(NFT nft) {
-
+                // TODO
             }
 
             @Override
             public void onConnectSuccess(String address) {
-                ChainverseSDK.getInstance().getItems();
+                // TODO
             }
 
             @Override
             public void onLogout(String address) {
-                
+                // TODO
             }
             
             @Override
             public void onSignMessage(String signed) {
-                Log.i("onSignMessage", signed);
+                // TODO
             }
 
             @Override
             public void onSignTransaction(Constants.EFunction function, String signed) {
-                Log.i("onSignTransaction", signed);
+                // TODO
             }
             
             @Override
             public void onTransact(Constants.EFunction function, String tx) {
-                LogUtil.log("transasction has", tx)
+                // TODO
+            }
+            
+            @Override
+            public void onErrorTransaction(Constants.EFunction function, String error) {
+                // TODO
             }
         });
+        
         ChainverseSDK.getInstance().setScheme("your-app-scheme://");
 ```
 
