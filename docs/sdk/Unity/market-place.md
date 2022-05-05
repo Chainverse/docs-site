@@ -132,3 +132,16 @@ public void onError(string s)
 }
 ```
 
+#### 8. Hàm cancelSell
+Hàm dùng để dừng bán NFT lên chợ. Thông tin trả về là transaction hash qua callback [onTransact](/docs/sdk/Unity/over-view#9-callback-ontransact)
+
+
+```
+/*
+ @param long listingId
+ */
+CVSDKHandler.Instance.CancelSellNFT(listingId);
+
+```
+
+
