@@ -78,3 +78,5 @@ Sử dụng hàm này để chuyển item sang địa chỉ ví khác. Hàm này
  */
 CVSDKHandler.Instance.TransferItem(to, nft, tokenId);
 ```
+
+![Docusaurus logo](/img/transfer-item.png)
