@@ -116,7 +116,9 @@ param: [nft](/docs/sdk/Reference/NFT), [tokenId](/docs/sdk/Reference/NFT)
  * @param to // Địa chỉ nhận NFT
  * @param nft
  * @param tokenId
- * return String
+ * return
  */
 ChainverseSDK.getInstance().transferItem(String to, String nft, BigInteger tokenId);
 ```
+
+![Docusaurus logo](/img/transfer-item.png)
