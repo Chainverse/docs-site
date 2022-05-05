@@ -7,7 +7,7 @@ sidebar_position: 1
 
 ### Cài đặt thủ công
 #### Bước 1: Tải xuống ChainverseUnitySDK.unitypackage
-Tải xuống ChainverseUnitySDK.unitypackage tại https://github.com/Chainverse/unity-sdk/releases
+Tải xuống [ChainverseUnitySDK.unitypackage](/unitypackage/ChainverseUnitySDK.unitypackage)
 #### Bước 2: Import ChainverseUnitySDK.unitypackage vào dự án Unity
 
 ![Docusaurus logo](https://i.imgur.com/CvStroE.png)
