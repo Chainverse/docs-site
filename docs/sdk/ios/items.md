@@ -22,7 +22,7 @@ Sử dụng hàm này để lấy danh sách ITEM của game đang bán trên ch
 [[ChainverseSDK shared] getListItemOnMarket:page pageSize:pageSize];
 
 //Callback delegate
-- (void)didGetListItemMarket:(NSArray<ChainverseNFT> *) items{
+- (void)didGetListItemMarket:(NSMutableArray<NFT> *) items{
     
 }
 ```
@@ -38,7 +38,7 @@ Sử dụng hàm này để lấy danh sách item user đang sở hữu (Kể c�
 [[ChainverseSDK shared] getMyAsset];
 
 //Callback delegate
-- (void)didGetMyAssets:(NSArray<ChainverseNFT> *) items{
+- (void)didGetMyAssets:(NSMutableArray<NFT> *) items{
    
 }
 ```
@@ -58,7 +58,7 @@ Sử dụng hàm này để lấy thông tin chi tiết của 1 item (Thông tin
 [[ChainverseSDK shared] getDetailNFT:@"nft" tokenId:tokenId];
 
 //Callback delegate
-- (void)didGetDetailItem:(ChainverseNFT*)item{
+- (void)didGetDetailItem:(NFT*)item{
    
 }
 ```
@@ -75,7 +75,7 @@ Sử dụng hàm này để lấy thông tin item trên blockchain.
  @param NSString nft
  @param NSInteger tokenId
  */
-[[ChainverseSDK shared] getNFT:nft tokenId:tokenId complete:^(ChainverseNFT *item){
+[[ChainverseSDK shared] getNFT:nft tokenId:tokenId complete:^(NFT *item){
     //Xử lý ở đây    
         
 }];

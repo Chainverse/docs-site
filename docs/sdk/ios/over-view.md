@@ -89,7 +89,7 @@ Import Chainverse và ChainverseSDKCallback to AppDelegate
 #import "Chainverse/ChainverseSDK.h"
 #import "Chainverse/ChainverseSDKCallback.h"
 #import "Chainverse/ChainverseItem.h"
-#import "Chainverse/ChainverseNFT.h"
+#import "Chainverse/NFT.h"
 #import "Chainverse/ChainverseSDKError.h"
 
 @interface AppDelegate () <ChainverseSDKCallback>
@@ -160,11 +160,11 @@ Khi user thực hiện thao tác đăng xuất callback này sẽ được gọi
 
 Khi hàm `[[ChainverseSDK shared] getListItemOnMarket];` callback này sẽ trả về danh sách NFT trong chợ.
 
-Bạn sẽ xử lý NFT trong chợ của bạn ở callback này.
+Bạn sẽ xử lý [NFT](/docs/sdk/Reference/NFT#nft) trong chợ của bạn ở callback này.
 
 ##### Objective C
 ```
-- (void)didGetListItemMarket:(NSArray<ChainverseNFT> *) items{
+- (void)didGetListItemMarket:(NSMutableArray<NFT> *) items{
     
 }
 ```
@@ -173,11 +173,11 @@ Bạn sẽ xử lý NFT trong chợ của bạn ở callback này.
 
 Khi hàm gọi `[[ChainverseSDK shared] getDetailNFT:{nft_address} tokenId:{tokenId}];` callback này sẽ trả về thông tin detail của NFT.
 
-Bạn sẽ xử lý NFT trong chợ của bạn ở callback này.
+Bạn sẽ xử lý [NFT](/docs/sdk/Reference/NFT#nft) trong chợ của bạn ở callback này.
 
 ##### Objective C
 ```
-- (void)didGetDetailItem:(ChainverseNFT*)item{
+- (void)didGetDetailItem:(NFT*)item{
     
 }
 ```
@@ -187,11 +187,11 @@ Bạn sẽ xử lý NFT trong chợ của bạn ở callback này.
 
 Khi hàm gọi `[[ChainverseSDK shared] getMyAsset];` callback này sẽ trả về danh sách NFT của user
 
-Bạn sẽ xử lý NFT của bạn ở callback này.
+Bạn sẽ xử lý [NFT](/docs/sdk/Reference/NFT#nft) của bạn ở callback này.
 
 ##### Objective C
 ```
-- (void)didGetMyAssets:(NSArray<ChainverseNFT> *) items{
+- (void)didGetMyAssets:(NSMutableArray<NFT> *) items{
     
 }
 ```
@@ -260,7 +260,7 @@ Khi gọi hàm  `[[ChainverseSDK shared] signMessage:@"message_can_ki"]` Callbac
 #import "Chainverse/ChainverseSDK.h"
 #import "Chainverse/ChainverseSDKCallback.h"
 #import "Chainverse/ChainverseItem.h"
-#import "Chainverse/ChainverseNFT.h"
+#import "Chainverse/NFT.h"
 #import "Chainverse/ChainverseSDKError.h"
 @interface AppDelegate ()<ChainverseSDKCallback>
 
@@ -311,7 +311,7 @@ Khi gọi hàm  `[[ChainverseSDK shared] signMessage:@"message_can_ki"]` Callbac
 }
 
 
-- (void)didGetDetailItem:(ChainverseNFT*)item{
+- (void)didGetDetailItem:(NFT*)item{
    
 }
 
@@ -332,11 +332,12 @@ Khi gọi hàm  `[[ChainverseSDK shared] signMessage:@"message_can_ki"]` Callbac
     
 }
 
-- (void)didGetListItemMarket:(NSArray<ChainverseNFT> *) items{
+- (void)didGetListItemMarket:(NSMutableArray<NFT> *) items{
+    
     
 }
 
-- (void)didGetMyAssets:(NSArray<ChainverseNFT> *) items{
+- (void)didGetMyAssets:(NSMutableArray<NFT> *) items{
     
 }
 
