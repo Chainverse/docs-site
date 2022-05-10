@@ -165,7 +165,27 @@ Bạn sẽ xử lý [NFT](/docs/sdk/Reference/NFT#nft) trong chợ của bạn �
 ##### Objective C
 ```
 - (void)didGetListItemMarket:(NSMutableArray<NFT> *) items{
-    
+    for(NFT *nft in _items){
+        NSLog(@"chainverse_nft %@",nft.token_id) ;
+        NSLog(@"chainverse_nft %@",nft.name) ;
+        NSLog(@"chainverse_nft %@",nft.nft) ;
+        NSLog(@"chainverse_nft %@",nft.owner) ;
+        NSLog(@"chainverse_nft %@",nft.attributes) ;
+        NSLog(@"chainverse_nft %@",nft.image) ;
+        InfoSell *infoSell = nft.infoSell;
+        NSLog(@"chainverse_infoSell %@",infoSell.listing_id) ;
+        NSLog(@"chainverse_infoSell %@",infoSell.price);
+        Currency *currency = [[Currency alloc] initWithDictionary:[infoSell.currency_info toDictionary] error:nil];
+        NSLog(@"chainverse_currency %@",currency.currency);
+        NSLog(@"chainverse_currency %@",currency.symbol);
+        NSLog(@"chainverse_currency %ld",currency.decimal);
+        NSLog(@"chainverse_currency %@",currency.name);
+        
+        Network *network = [[Network alloc] initWithDictionary:[nft.network_info toDictionary] error:nil];
+        NSLog(@"chainverse_network %@",network.name);
+        NSLog(@"chainverse_network %@",network.network);
+        NSLog(@"chainverse_network %@",network.chain_id);
+    }
 }
 ```
 
@@ -178,7 +198,25 @@ Bạn sẽ xử lý [NFT](/docs/sdk/Reference/NFT#nft) trong chợ của bạn �
 ##### Objective C
 ```
 - (void)didGetDetailItem:(NFT*)item{
+    NSLog(@"chainverse_nft %@",item.token_id) ;
+    NSLog(@"chainverse_nft %@",item.name) ;
+    NSLog(@"chainverse_nft %@",item.nft) ;
+    NSLog(@"chainverse_nft %@",item.owner) ;
+    NSLog(@"chainverse_nft %@",item.attributes) ;
+    NSLog(@"chainverse_nft %@",item.image) ;
+    InfoSell *infoSell = item.infoSell;
+    NSLog(@"chainverse_infoSell %@",infoSell.listing_id) ;
+    NSLog(@"chainverse_infoSell %@",infoSell.price);
+    Currency *currency = [[Currency alloc] initWithDictionary:[infoSell.currency_info toDictionary] error:nil];
+    NSLog(@"chainverse_currency %@",currency.currency);
+    NSLog(@"chainverse_currency %@",currency.symbol);
+    NSLog(@"chainverse_currency %ld",currency.decimal);
+    NSLog(@"chainverse_currency %@",currency.name);
     
+    Network *network = [[Network alloc] initWithDictionary:[item.network_info toDictionary] error:nil];
+    NSLog(@"chainverse_network %@",network.name);
+    NSLog(@"chainverse_network %@",network.network);
+    NSLog(@"chainverse_network %@",network.chain_id);
 }
 ```
 
@@ -312,7 +350,25 @@ Khi gọi hàm  `[[ChainverseSDK shared] signMessage:@"message_can_ki"]` Callbac
 
 
 - (void)didGetDetailItem:(NFT*)item{
-   
+    NSLog(@"chainverse_nft %@",item.token_id) ;
+    NSLog(@"chainverse_nft %@",item.name) ;
+    NSLog(@"chainverse_nft %@",item.nft) ;
+    NSLog(@"chainverse_nft %@",item.owner) ;
+    NSLog(@"chainverse_nft %@",item.attributes) ;
+    NSLog(@"chainverse_nft %@",item.image) ;
+    InfoSell *infoSell = item.infoSell;
+    NSLog(@"chainverse_infoSell %@",infoSell.listing_id) ;
+    NSLog(@"chainverse_infoSell %@",infoSell.price);
+    Currency *currency = [[Currency alloc] initWithDictionary:[infoSell.currency_info toDictionary] error:nil];
+    NSLog(@"chainverse_currency %@",currency.currency);
+    NSLog(@"chainverse_currency %@",currency.symbol);
+    NSLog(@"chainverse_currency %ld",currency.decimal);
+    NSLog(@"chainverse_currency %@",currency.name);
+    
+    Network *network = [[Network alloc] initWithDictionary:[item.network_info toDictionary] error:nil];
+    NSLog(@"chainverse_network %@",network.name);
+    NSLog(@"chainverse_network %@",network.network);
+    NSLog(@"chainverse_network %@",network.chain_id);
 }
 
 - (void)didItemUpdate:(ChainverseItem *)item type:(int)type{
@@ -333,7 +389,27 @@ Khi gọi hàm  `[[ChainverseSDK shared] signMessage:@"message_can_ki"]` Callbac
 }
 
 - (void)didGetListItemMarket:(NSMutableArray<NFT> *) items{
-    
+    for(NFT *nft in _items){
+        NSLog(@"chainverse_nft %@",nft.token_id) ;
+        NSLog(@"chainverse_nft %@",nft.name) ;
+        NSLog(@"chainverse_nft %@",nft.nft) ;
+        NSLog(@"chainverse_nft %@",nft.owner) ;
+        NSLog(@"chainverse_nft %@",nft.attributes) ;
+        NSLog(@"chainverse_nft %@",nft.image) ;
+        InfoSell *infoSell = nft.infoSell;
+        NSLog(@"chainverse_infoSell %@",infoSell.listing_id) ;
+        NSLog(@"chainverse_infoSell %@",infoSell.price);
+        Currency *currency = [[Currency alloc] initWithDictionary:[infoSell.currency_info toDictionary] error:nil];
+        NSLog(@"chainverse_currency %@",currency.currency);
+        NSLog(@"chainverse_currency %@",currency.symbol);
+        NSLog(@"chainverse_currency %ld",currency.decimal);
+        NSLog(@"chainverse_currency %@",currency.name);
+        
+        Network *network = [[Network alloc] initWithDictionary:[nft.network_info toDictionary] error:nil];
+        NSLog(@"chainverse_network %@",network.name);
+        NSLog(@"chainverse_network %@",network.network);
+        NSLog(@"chainverse_network %@",network.chain_id);
+    }
     
 }
 
