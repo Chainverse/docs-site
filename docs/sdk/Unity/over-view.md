@@ -60,7 +60,87 @@ Ví dụ:
     }
 ```
 
-### Thiết lập đối với iOS (comming soon)
+### Thiết lập đối với iOS (Build bằng Xcode)
+
+### Cài đặt thủ công
+#### Bước 1: Tải xuống static framework
+Tải xuống ChainverseSDK_Framework.zip tại https://github.com/Chainverse/ios-sdk/releases
+#### Bước 2: Giải nén
+Giải nén file ChainverseSDK.framework.zip bạn vừa tải xuống có những file sau:
+```
+Chainverse.framework
+ChainverseBundle.bundle
+BigInt.xcframework
+CryptoSwift.xcframework
+PromiseKit.xcframework
+SipHash.xcframework
+Starscream.xcframework
+SocketIO.xcframework
+secp256k1.xcframework
+```
+#### Bước 3: Import vào dự án
+Kéo tất cả những file đã giải nén ở Bước 2 vào dự án của bạn 
+
+#### Bước 4. Embed framework
+Chọn Embed & Sign đối với :
+```
+BigInt.xcframework
+CryptoSwift.xcframework
+PromiseKit.xcframework
+SipHash.xcframework
+Starscream.xcframework
+SocketIO.xcframework
+secp256k1.xcframework
+```
+
+![Docusaurus logo](https://i.imgur.com/5umw9yI.png)
+
+#### Bước 5: Tạo Bridging Header
+- File -> New -> File
+- Select Swift File
+- Tạo 1 file .swift với tên bất kì.
+
+![Docusaurus logo](https://i.imgur.com/Wulhemz.png)
+
+
+- Confirm Create Bridging Header .
+
+![Docusaurus logo](https://i.imgur.com/5Yr786R.png)
+
+
+#### Bước 6:  Thiết lập Url scheme
+Bạn cần thiết lập Url scheme để  connect với ví Chainverse
+
+![Docusaurus logo](https://i.imgur.com/otRESxJ.png)
+
+
+####  Bước 7. Config Application Schemes
+Bạn phải thiết lập "chainverse" trong file Info.Plist để connect với ví Chainverse. 
+
+```
+<key>LSApplicationQueriesSchemes</key>
+<array>
+   <string>chainverse</string>
+</array>
+
+```
+
+####  Bước 8. Config trong file UnityAppController
+Thiết lập `handleOpenUrl` để hứng dữ liệu từ app chainverse
+
+```
+#import "Chainverse/ChainverseSDK.h"
+
+- (BOOL)application:(UIApplication*)app openURL:(NSURL*)url options:(NSDictionary<NSString*, id>*)options
+{
+   
+    ....
+    return [[ChainverseSDK shared] handleOpenUrl:(UIApplication *)app
+                                  openURL:(NSURL *)url
+                                  options:(NSDictionary<UIApplicationOpenURLOptionsKey, id> *)options];
+    
+}
+```
 
 ## Tích hợp SDK
 ### Trước khi bắt đầu
@@ -73,15 +153,24 @@ Tài liệu này chứa các tham số bắt buộc. Bạn phải đảm bảo k
 3. "App Scheme": Khai báo scheme để connect Chainverse.
 
 #### Bướ​c 1: Khởi tạo SDK
-Chainverse SDK Init phải được gọi một lần khi ứng dụng khởi động thông qua lớp CVSDKHandler, Gọi hàm `CVSDKHandler.Instance.Init(developerAddress, gameAddress)` trong Scene đầu tiên của bạn.
+Chainverse SDK Init phải được gọi một lần khi ứng dụng khởi động thông qua lớp CVSDKHandler, Gọi hàm `Init` trong Scene đầu tiên của bạn.
 
 ```
-string developerAddress = "0x6A6c53a166DDDbE7049982864d21C75AB18fc50C";
-string gameAddress = "0x13f1A9097A7Cd7BeBC5Ad5c79160db3067FEf20E";
-CVSDKHandler.Instance.Init(developerAddress, gameAddress);
+string DevelopAddress = "0x6A6c53a166DDDbE7049982864d21C75AB18fc50C";
+string GameAddress = "0x13f1A9097A7Cd7BeBC5Ad5c79160db3067FEf20E";
+string Scheme = "demo-app-chainverse://";
+#if UNITY_IOS
+CVSDKHandler.Instance.Init(DevelopAddress, GameAddress,scheme);
+#endif
+
+
+#if UNITY_ANDROID
+CVSDKHandler.Instance.Init(DevelopAddress, GameAddress);
+CVSDKHandler.Instance.SetScheme(Scheme);
+#endif
 ```
 
-#### Bướ​c 2. Gọi hàm `CVSDKHandler.Instance.SetScheme("your-app-scheme://")` để hứng dữ liệu từ app ví Chainverse
+#### Bướ​c 2. Gọi hàm `SetScheme` (chỉ gọi với plaform Android) để hứng dữ liệu từ app ví Chainverse
 ```
 CVSDKHandler.Instance.SetScheme("demo-app-chainverse://");
 ```
@@ -114,9 +203,9 @@ public void onError(int i)
 Khi user connect tới ví Chainverse thành công thì sẽ có callback này. Thông tin trả về là địa chỉ ví của user. 
 
 ```
-public void onConnectSuccess(string s)
+public void onConnectSuccess(string Address)
 {
-    Debug.Log("onConnectSuccess " + s);
+    Debug.Log("onConnectSuccess " + Address);
 }
 ```
 
@@ -125,57 +214,63 @@ Khi user thực hiện thao tác đăng xuất callback này sẽ được gọi
 
 
 ```
-public void onLogout(string s)
+public void onLogout(string Address)
 {
-   Debug.Log("onLogout " + s);
+   Debug.Log("onLogout " + Address);
 }
 ```
 
 #### 5. Callback onGetListItemMarket
 
-Khi hàm `CVSDKHandler.Instance.GetListItemOnMarket(filterMarket)` callback này sẽ trả về danh sách NFT trong chợ.
+Khi hàm `GetListItemOnMarket` callback này sẽ trả về danh sách NFT trong chợ.
 
 Bạn sẽ xử lý NFT trong chợ của bạn ở callback này.
 
 ```
-//Gọi hàm
-FilterMarket filterMarket = new FilterMarket(0, 10, "");
-string str = JsonConvert.SerializeObject(filterMarket);
-Debug.Log("GetListItemOnMarket1 :" + str);
-CVSDKHandler.Instance.GetListItemOnMarket(str);
-
-//Callback
-public void onGetListItemMarket(string nftListJson)//
+public void OnGetListItemMarket(string Items)
 {
-    string[] chainverseItemJson1 = nftListJson.Split('\n');
-    int i = int.Parse(chainverseItemJson1[1]);
-    Debug.Log("onGetListItemMarket");
-    Debug.Log(chainverseItemJson1[0]);
-    Debug.Log(i);
-    List<NFT> nftList = JsonConvert.DeserializeObject<List<NFT>>(chainverseItemJson1[0]);
-    foreach (var item in nftList)
-    {
-       Debug.Log(item.getOwner());
-    }
+     Debug.Log(Items);
+     Debug.Log("OnGetListItemMarket");
+     Debug.Log(Items);
+     List<NFT> nfts = JsonConvert.DeserializeObject<List<NFT>>(Items);
+
+     foreach (var item in nfts)
+     {
+        Debug.Log(item.getNft());
+        Debug.Log(item.getOwner());
+        Debug.Log(item.getName());
+        Debug.Log(item.getAttributes());
+
+        InfoSell infoSell = item.getInfoSell();
+        Debug.Log(infoSell.getPrice());
+        Debug.Log(infoSell.getListingId());
+
+        Currency currency = infoSell.getCurrencyInfo();
+        Debug.Log(currency.getCurrency());
+        Debug.Log(currency.getSymbol());
+        Debug.Log(currency.getName());
+
+        Network network = item.getNetwork();
+        Debug.Log(network.getName());
+        Debug.Log(network.getNetwork());
+        Debug.Log(network.getChainId());
+     }
 }
 ```
 
 #### 6. Callback onGetDetailItem
 
-Khi hàm gọi `CVSDKHandler.Instance.GetDetailNFT(nft, tokenId)` callback này sẽ trả về thông tin detail của NFT.
+Khi hàm gọi `GetDetailNFT` callback này sẽ trả về thông tin detail của NFT.
 
 Bạn sẽ xử lý NFT trong chợ của bạn ở callback này.
 
 ```
-//Gọi hàm
-CVSDKHandler.Instance.GetDetailNFT(nft, tokenId);
 
-//Callback
-public void onGetDetailItem(string nftJson)
+public void OnGetDetailItem(string Item)
 {
-    Debug.Log("onGetDetailItem");
-    Debug.Log(nftJson);
-    NFT nft = JsonConvert.DeserializeObject<NFT>(nftJson);
+    Debug.Log("OnGetDetailItem");
+    Debug.Log(Item);
+    NFT nft = JsonConvert.DeserializeObject<NFT>(Item);
 
     Debug.Log(nft.getNft());
     Debug.Log(nft.getName());
@@ -189,19 +284,18 @@ public void onGetDetailItem(string nftJson)
 
 #### 7. Callback onGetMyAssets
 
-Khi hàm gọi `CVSDKHandler.Instance.GetMyAsset();` callback này sẽ trả về danh sách NFT của user
+Khi hàm gọi `GetMyAsset` callback này sẽ trả về danh sách NFT của user
 
 Bạn sẽ xử lý NFT của bạn ở callback này.
 
-##### Objective C
 ```
-public void onGetMyAssets(string nftListJson)
+public void OnGetMyAssets(string Items)
 {
     Debug.Log("onGetMyAssets");
-    Debug.Log(nftListJson);
-    List<NFT> nftList = JsonConvert.DeserializeObject<List<NFT>>(nftListJson);
+    Debug.Log(Items);
+    List<NFT> nfts = JsonConvert.DeserializeObject<List<NFT>>(Items);
 
-    foreach (var item in nftList)
+    foreach (var item in nfts)
     {
         Debug.Log(item.getOwner());
         Debug.Log(item.getName());
@@ -217,17 +311,20 @@ Khi​ chuyển NFT qua lại giữa user - user trong 1 game, và chuyển từ
 Bạn sẽ xử lý NFT trong game của bạn ở callback này.
 
 ```
-public void onItemUpdate(string chainverseItemJson)
+public void OnItemUpdate(string ItemAndType)
 {
-        string[] chainverseItemJson1 = chainverseItemJson.Split('\n');
-        int i = int.Parse(chainverseItemJson1[1]);
+    string[] ItemAndTypeArr = ItemAndType.Split('|');
+    int type = int.Parse(ItemAndTypeArr[1]);
+    //type
+    //1:Xử lý item trong game khi item NFT chuyển tới tài khoản của bạn
+    //2:Xử lý item trong game khi item NFT của bạn chuyến tời tài khoản khác
 
-        Debug.Log("onItemUpdate");
-        ChainverseItem chainverseItem = JsonConvert.DeserializeObject<ChainverseItem>(chainverseItemJson1[0]);
-        Debug.Log(i);
-        Debug.Log(chainverseItem.getGame_address());
-        Debug.Log(chainverseItem.getAttributes());
-        Debug.Log(chainverseItem.getItem_id());
+
+    Debug.Log("OnItemUpdate");
+    Item chainverseItem = JsonConvert.DeserializeObject<Item>(ItemAndTypeArr[0]);
+    Debug.Log(chainverseItem.getGame_address());
+    Debug.Log(chainverseItem.getAttributes());
+    Debug.Log(chainverseItem.getItem_id());
 
 }
 ```
@@ -237,17 +334,50 @@ public void onItemUpdate(string chainverseItemJson)
 Callback này sẽ trả về transaction hash và function khi thực hiện các chức năng blockchain
 
 
-##### Objective C
-```
-public void onTransact(string s)
-{
-  string[] chainverseItemJson1 = s.Split('\n');
-  int eFunctionInt = int.Parse(chainverseItemJson1[0]);
-  Constants.EFunction eFunction = (Constants.EFunction)eFunctionInt;
-  string msg = chainverseItemJson1[1];
 
-  Debug.Log("onTransact");
-  Debug.Log(msg);
-  Debug.Log(eFunction);
+```
+public void OnTransact(string transaction)
+{
+    string[] transactions = transaction.Split('|');
+    int eFunctionInt = int.Parse(transactions[0]);
+    Constants.EFunction eFunction = (Constants.EFunction)eFunctionInt;
+    string hash = transactions[1];
+    Debug.Log("OnTransact");
+    Debug.Log(hash);
+    Debug.Log(eFunction);
+}
+```
+
+#### 10. Callback OnPublishNFT
+
+Callback này sẽ trả về trạng thái publish NFT
+
+
+```
+public void OnPublishNFT(string s)
+{
+    Debug.Log("OnPublishNFT");
+    Debug.Log(s);
+}
+```
+
+#### 11. Callback OnGetNFT (chỉ dùng với platform iOS)
+
+Callback này trả về thông tin NFT (on chain) khi gọi hàm `GetNFT`
+
+```
+public void OnGetNFT(string Item)
+{
+    Debug.Log("OnGetNFT");
+    Debug.Log(Item);
+    NFT nft = JsonConvert.DeserializeObject<NFT>(Item);
+
+    Debug.Log(nft.getNft());
+    Debug.Log(nft.getName());
+    Debug.Log(nft.getTokenId());
+    Debug.Log(nft.getListing()?.getTokenId());
+    Debug.Log(nft.getInfoSell()?.getPrice());
+    Debug.Log(nft.getInfoSell()?.getCurrencyInfo()?.getCurrency());
+    Debug.Log(nft.getInfoSell()?.getListingId());
 }
 ```

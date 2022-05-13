@@ -19,7 +19,7 @@ Nếu không approve token trước khi mua, bạn có thể sẽ gặp lỗi sa
  buyNFT: Mua NFT trên chợ
  @param string currency
  @param long listingId
- @param price price
+ @param double price
  */
 CVSDKHandler.Instance.BuyNFT(currency, listingId, price);
 ```
@@ -51,7 +51,7 @@ CVSDKHandler.Instance.SellNFT(nft, tokenId, price, currency);
 
 ![sell nft](/img/sellNFT.png)
 
-## 3. Hàm isApproved (Token)
+## 3. Hàm isApprovedToken
 Hàm này sử dụng để lấy số lượng token mà bạn đã approved cho một địa chỉ nào đó. Thông tin transaction hash cũng sẽ được trả về qua callback [onTransact](/docs/sdk/Unity/over-view#9-callback-ontransact)
 (Khuyến khích xử lý logic trong hàm này).
 
@@ -64,11 +64,10 @@ Hàm này sử dụng để lấy số lượng token mà bạn đã approved ch
  @param string owner
  @param string spender
  */
-var rs = CVSDKHandler.Instance.IsApproved(token, owner, spender);
-Debug.Log(rs);
+CVSDKHandler.Instance.IsApprovedToken(token, owner, spender);
 ```
 
-## 4. Hàm isApproved (NFT)
+## 4. Hàm isApprovedNFT
 Hàm này sử dụng để kiểm tra item bạn muốn bán đã được approved cho chợ chưa.
 
 **Chú ý**: Trước khi muốn bán item, bạn phải approve item đó cho chợ.
@@ -80,7 +79,7 @@ Hàm này sử dụng để kiểm tra item bạn muốn bán đã được appr
  @param nft nft
  @param long tokenId
  */
-CVSDKHandler.Instance.IsApproved(nft, tokenId);
+CVSDKHandler.Instance.IsApprovedNFT(nft, tokenId);
 ```
 
 ## 5. Hàm approveToken
@@ -91,7 +90,7 @@ Hàm này sử dụng để approve token cho một địa chỉ. Hàm này tr�
  approveToken: Hàm này sử dụng để approve token cho một địa chỉ
 @param String token
 @param String spender
-@param String amount
+@param double amount
  */
 CVSDKHandler.Instance.ApproveToken(token, spender, amount);
 ```
@@ -120,16 +119,6 @@ Hàm này sử dụng để publish item của bạn lên ChainVerse Market. Sau
  @param long tokenId
  */
 CVSDKHandler.Instance.PublishNFT(nft, tokenId);
-
-//Các hàm callback tại Assets/Chainverse/SDK/CVSDKPublishNFTReceiver.cs 
-public void onSuccess()
-{
-    Debug.Log("onSuccess");
-}
-public void onError(string s)
-{
-    Debug.Log("onError " + s);
-}
 ```
 
 #### 8. Hàm cancelSell
