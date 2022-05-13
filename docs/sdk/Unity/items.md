@@ -9,9 +9,15 @@ Sử dụng hàm này để lấy danh sách ITEM của game đang bán trên ch
 
 
 ```
+#if UNITY_ANDROID
 FilterMarket filterMarket = new FilterMarket(0, 10, "");
-string filter = JsonConvert.SerializeObject(filterMarket);
-CVSDKHandler.Instance.GetListItemOnMarket(filter);
+string str = JsonConvert.SerializeObject(filterMarket);
+CVSDKHandler.Instance.GetListItemOnMarket(str);
+#endif
+        
+#if UNITY_IOS
+CVSDKHandler.Instance.GetListItemOnMarket(0,10);
+#endif
 ```
 
 
@@ -52,7 +58,11 @@ Sử dụng hàm này để lấy thông tin item trên blockchain.
  @param string nft
  @param long tokenId
  */
-var nft = CVSDKHandler.Instance.GetNFT(nft, tokenId);
+string nftContract = nftTest.text;
+long tokenId = long.Parse(tokenidTest.text);
+#if UNITY_ANDROID
+NFT nft = CVSDKHandler.Instance.GetNFT(nftContract, tokenId);
+Debug.Log("GetNFT1");
 Debug.Log(nft.getNft());
 Debug.Log(nft.getName());
 Debug.Log(nft.getAttributes());
@@ -60,6 +70,28 @@ Debug.Log(nft.getListing()?.getPrice());
 Debug.Log(nft.getListing()?.getTokenId());
 Debug.Log(nft.getInfoSell()?.getPrice());
 Debug.Log(nft.getInfoSell()?.getListingId());
+#endif
+
+#if UNITY_IOS
+CVSDKHandler.Instance.GetNFT(nftContract, tokenId);
+#endif
+
+//Callback (chỉ sử dụng với platform iOS)
+public void OnGetNFT(string Item)
+{
+   Debug.Log("OnGetNFT");
+   Debug.Log(Item);
+   NFT nft = JsonConvert.DeserializeObject<NFT>(Item);
+
+   Debug.Log(nft.getNft());
+   Debug.Log(nft.getName());
+   Debug.Log(nft.getTokenId());
+   Debug.Log(nft.getAttributes());
+   Debug.Log(nft.getListing()?.getTokenId());
+   Debug.Log(nft.getInfoSell()?.getPrice());
+   Debug.Log(nft.getInfoSell()?.getCurrencyInfo()?.getCurrency());
+   Debug.Log(nft.getInfoSell()?.getListingId());
+}
 ```
 
 ![Docusaurus logo](/img/get-nft.png)

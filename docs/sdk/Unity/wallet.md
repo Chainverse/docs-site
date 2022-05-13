@@ -42,9 +42,9 @@ Gọi hàm này để thực hiện logout. Thông tin được trả về qua c
 CVSDKHandler.Instance.Logout();
 
 //Delegate callback
-public void onLogout(string s)
+public void onLogout(string Address)
 {
-    Debug.Log("onLogout " + s);
+    Debug.Log("onLogout " + Address);
 
 }
 ```
@@ -68,13 +68,14 @@ CVSDKHandler.Instance.GetVersion();
 
 ```
 
-#### 7. Hàm GetUserAddress và GetUserSignature
+#### 7. Hàm GetUser
 Trả về thông tin của user bao gồm : address và signature
 
 
 ```
-CVSDKHandler.Instance.GetUserAddress();
-CVSDKHandler.Instance.GetUserSignature();
+User user = CVSDKHandler.Instance.GetUser();
+Debug.Log("OnConnectSuccess " + user.getAddress());
+Debug.Log("OnConnectSuccess " + user.getSignature());
 ```
 
 #### 8. Hàm IsUserConnected
