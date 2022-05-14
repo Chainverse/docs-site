@@ -10,7 +10,7 @@ sidebar_position: 1
 Tải xuống [ChainverseUnitySDK.unitypackage](/unitypackage/ChainverseUnitySDK.unitypackage)
 #### Bước 2: Import ChainverseUnitySDK.unitypackage vào dự án Unity
 
-![Docusaurus logo](https://i.imgur.com/CvStroE.png)
+![Docusaurus logo](https://i.imgur.com/VxHEOLh.png)
 
 
 ### Thiết lập đối với android (Build bằng android studio)
