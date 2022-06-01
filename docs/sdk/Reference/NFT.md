@@ -29,7 +29,7 @@ Lớp InfoSell cung cấp các dữ liệu liên quan đến thông tin bán c�
 
 | Name  | Type | Method | Description | 
 | ------------- | ------------- | ------------- | ------------- |
-| listing_id  | BigInteger  | getListingId | Id bán hoặc đấu giá (Id này dùng cho [buy](/docs/sdk/android/services/market-place#2-hàm-buynft). Hàm đấu giá phiên bản 1.0.26 hiện chưa hỗ trợ) | 
+| listing_id  | BigInteger  | getListingId | Id bán hoặc đấu giá (Id này dùng cho [buy](/docs/sdk/android/market-place#2-hàm-buynft). Hàm đấu giá phiên bản 1.0.26 hiện chưa hỗ trợ) | 
 | price  | Double  | getPrice | Giá bán hoặc đấu giá của item | 
 | is_auction  | Boolean | isAuction | True là đấu giá, false là bán |
 | currency_info  | Currency  | getCurrencyInfo | Thông tin đồng của item đang bán | 
@@ -85,18 +85,18 @@ Lớp Listing cung cấp thông tin bán của NFT (nếu có). Lớp này đư�
 
 | Name  | Type | Method | Description | 
 | ------------- | ------------- | ------------- | ------------- |
-| price  | double  | getPrice | Giá bán của item (dùng cho param **price** của hàm [buy](/docs/sdk/android/services/market-place#2-hàm-buynft)) | 
+| price  | double  | getPrice | Giá bán của item (dùng cho param **price** của hàm [buy](/docs/sdk/android/market-place#2-hàm-buynft)) | 
 
 ## BaseInfo
 Lớp BaseInfo cung cấp thông tin bán cơ bản của một NFT
 
 | Name  | Type | Method | Description | 
 | ------------- | ------------- | ------------- | ------------- |
-| id  | BigInteger  | getId | Id bán hoặc đấu giá của item (dùng cho param **listing_id** của hàm [buy](/docs/sdk/android/services/market-place#2-hàm-buynft)) | 
+| id  | BigInteger  | getId | Id bán hoặc đấu giá của item (dùng cho param **listing_id** của hàm [buy](/docs/sdk/android/market-place#2-hàm-buynft)) | 
 | isEnded  | boolean  | isEnded | True là đã kết thúc bán hoặc đấu giá, false là ngược lại | 
 | nft  | String  | getNft | Địa chỉ contract của NFT | 
 | owner  | String  | getOwner | Địa chỉ chủ sở hữu NFT | 
-| currency  | String  | getCurrency | Địa chỉ currency (dùng cho param **currency** của hàm [buy](/docs/sdk/android/services/market-place#2-hàm-buynft))  | 
+| currency  | String  | getCurrency | Địa chỉ currency (dùng cho param **currency** của hàm [buy](/docs/sdk/android/market-place#2-hàm-buynft))  | 
 | tokenId  | BigInteger  | getTokenId | Id của token | 
 | fee  | int  | getFee | Phí bán trên chợ (Phí cho người bán) |
 
