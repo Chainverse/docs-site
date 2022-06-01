@@ -1,13 +1,13 @@
 ---
-sidebar_label: 'Market Place Service'
-sidebar_position: 1
+sidebar_label: 'Market Place'
+sidebar_position: 4
 ---
 
 # Market Place
 
 ## 1. Hàm buyNFT
 Hàm này sử dụng để mua item đang bán trên chợ. Hàm này trả về transaction hash. Thông tin transaction hash cũng sẽ được trả về qua callback [onTransact](/docs/sdk/android/over-view#10-callback-ontransact) 
-(Khuyến khích xử lý logic trong hàm này).
+(Khuyến khích xử lý logic trong hàm này).__
 
 **Chú ý**: Nếu bạn mua bằng token, bạn cần phải kiểm tra số lượng token đã approve cho chợ bằng hàm [isApproved (Token)](#3-hàm-isapproved-token).
 sử dụng hàm [approveToken](#5-hàm-approvetoken) để approve token.
