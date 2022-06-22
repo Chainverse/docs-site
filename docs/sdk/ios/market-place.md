@@ -6,8 +6,7 @@ sidebar_position: 4
 # Market Place
 
 ## 1. Hàm buyNFT
-Hàm này sử dụng để mua item đang bán trên chợ. Hàm này trả về transaction hash. Thông tin transaction hash cũng sẽ được trả về qua callback [didTransact](/docs/sdk/ios/over-view#9-callback-didtransact) 
-(Khuyến khích xử lý logic trong hàm này).
+Hàm này sử dụng để mua item đang bán trên chợ. Thông tin transaction hash cũng sẽ được trả về qua callback [didTransact](/docs/sdk/ios/over-view#9-callback-didtransact) 
 
 **Chú ý**: Nếu bạn mua bằng token, bạn cần phải kiểm tra số lượng token đã approve cho chợ bằng hàm [isApproved (Token)](#3-hàm-isapproved-token).
 sử dụng hàm [approveToken](#5-hàm-approvetoken) để approve token.

@@ -6,8 +6,7 @@ sidebar_position: 4
 # Market Place
 
 ## 1. Hàm buyNFT
-Hàm này sử dụng để mua item đang bán trên chợ. Hàm này trả về transaction hash. Thông tin transaction hash cũng sẽ được trả về qua callback [onTransact](/docs/sdk/Unity/over-view#9-callback-ontransact) 
-(Khuyến khích xử lý logic trong hàm này).
+Hàm này sử dụng để mua item đang bán trên chợ. Thông tin transaction hash cũng sẽ được trả về qua callback [onTransact](/docs/sdk/Unity/over-view#9-callback-ontransact) 
 
 **Chú ý**: Nếu bạn mua bằng token, bạn cần phải kiểm tra số lượng token đã approve cho chợ bằng hàm [isApproved (Token)](/docs/sdk/Unity/market-place#3-hàm-isapproved-token).
 sử dụng hàm [approveToken](/docs/sdk/Unity/market-place#5-hàm-approvetoken) để approve token.
@@ -27,8 +26,7 @@ CVSDKHandler.Instance.BuyNFT(currency, listingId, price);
 ![buy nft](/img/buyNFT.png)
 
 ## 2. Hàm sellNFT
-Hàm này sử dụng để bán item lên chợ. Hàm này trả về transaction hash. Thông tin transaction hash cũng sẽ được trả về qua callback [onTransact](/docs/sdk/Unity/over-view#9-callback-ontransact)
- (Khuyến khích xử lý logic trong hàm này).
+Hàm này sử dụng để bán item lên chợ. Thông tin transaction hash cũng sẽ được trả về qua callback [onTransact](/docs/sdk/Unity/over-view#9-callback-ontransact)
 
 **Chú ý**: Nếu bạn muốn bán item lên chợ, bạn cần phải kiểm tra item đó đã được approved cho chợ hay chưa bằng hàm [isApproved (NFT)](/docs/sdk/Unity/market-place#4-hàm-isapproved-nft).
 Sử dụng hàm [approveNFT](/docs/sdk/Unity/market-place#6-hàm-approvenft) để approve item.
@@ -83,8 +81,8 @@ CVSDKHandler.Instance.IsApprovedNFT(nft, tokenId);
 ```
 
 ## 5. Hàm approveToken
-Hàm này sử dụng để approve token cho một địa chỉ. Hàm này trả về transaction hash. Thông tin transaction hash cũng sẽ được trả về qua callback [onTransact](/docs/sdk/Unity/over-view#9-callback-ontransact)
-(Khuyến khích xử lý logic trong hàm này).
+Hàm này sử dụng để approve token cho một địa chỉ. Thông tin transaction hash cũng sẽ được trả về qua callback [onTransact](/docs/sdk/Unity/over-view#9-callback-ontransact)
+
 ```
 /*
  approveToken: Hàm này sử dụng để approve token cho một địa chỉ
@@ -96,8 +94,7 @@ CVSDKHandler.Instance.ApproveToken(token, spender, amount);
 ```
 
 ## 6. Hàm approveNFT
-Hàm này sử dụng để approve item bạn muốn bán cho chợ. Hàm này trả về transaction hash. Thông tin transaction hash cũng sẽ được trả về qua callback [onTransact](/docs/sdk/Unity/over-view#9-callback-ontransact)
-(Khuyến khích xử lý logic trong hàm này).
+Hàm này sử dụng để approve item bạn muốn bán cho chợ. Thông tin transaction hash cũng sẽ được trả về qua callback [onTransact](/docs/sdk/Unity/over-view#9-callback-ontransact)
 
 ```
 /*

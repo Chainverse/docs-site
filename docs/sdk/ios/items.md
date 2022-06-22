@@ -85,8 +85,7 @@ Sử dụng hàm này để lấy thông tin item trên blockchain.
 ![Docusaurus logo](/img/get-nft.png)
 
 ## 5. Hàm transferItem
-Sử dụng hàm này để chuyển item sang địa chỉ ví khác. Hàm này trả về transaction hash. Thông tin transaction hash cũng sẽ được trả về qua callback [onTransact](/docs/sdk/ios/over-view#9-callback-didtransact)
-(Khuyến khích xử lý logic trong hàm này).
+Sử dụng hàm này để chuyển item sang địa chỉ ví khác. Thông tin transaction hash cũng sẽ được trả về qua callback [onTransact](/docs/sdk/ios/over-view#9-callback-didtransact)
 
 
 ```

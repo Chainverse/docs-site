@@ -105,8 +105,7 @@ ChainverseSDK.getInstance().getNFT(String nft, BigInteger tokenId);
 ![Docusaurus logo](/img/get-nft.png)
 
 ## 6. Hàm transferItem
-Sử dụng hàm này để chuyển item sang địa chỉ ví khác. Hàm này trả về transaction hash. Thông tin transaction hash cũng sẽ được trả về qua callback [onTransact](/docs/sdk/android/over-view#10-callback-ontransact)
-(Khuyến khích xử lý logic trong hàm này).
+Sử dụng hàm này để chuyển item sang địa chỉ ví khác. Thông tin transaction hash cũng sẽ được trả về qua callback [onTransact](/docs/sdk/android/over-view#10-callback-ontransact)
 
 param: [nft](/docs/sdk/Reference/NFT), [tokenId](/docs/sdk/Reference/NFT)
 
@@ -122,3 +121,37 @@ ChainverseSDK.getInstance().transferItem(String to, String nft, BigInteger token
 ```
 
 ![Docusaurus logo](/img/transfer-item.png)
+
+## 7. Hàm withdrawNFT
+Sử dụng hàm này để rút item từ game về ví. Thông tin transaction hash cũng sẽ được trả về qua callback [onTransact](/docs/sdk/android/over-view#10-callback-ontransact)
+
+param: [nft](/docs/sdk/Reference/NFT), [tokenId](/docs/sdk/Reference/NFT)
+
+```
+/**
+ * withdrawNFT
+ * @param nft
+ * @param tokenId
+ * return
+ */
+ChainverseSDK.getInstance().withdrawNFT(String nft, BigInteger tokenId);
+```
+
+![Docusaurus logo](/img/with-draw-nft.png)
+
+## 8. Hàm moveItemToGame
+Sử dụng hàm này để chuyển item từ ví vào game. Thông tin transaction hash cũng sẽ được trả về qua callback [onTransact](/docs/sdk/android/over-view#10-callback-ontransact)
+
+param: [nft](/docs/sdk/Reference/NFT), [tokenId](/docs/sdk/Reference/NFT)
+
+```
+/**
+ * moveItemToGame
+ * @param nft
+ * @param tokenId
+ * return
+ */
+ChainverseSDK.getInstance().moveItemToGame(String nft, BigInteger tokenId);
+```
+
+![Docusaurus logo](/img/move-item-to-game.png)
