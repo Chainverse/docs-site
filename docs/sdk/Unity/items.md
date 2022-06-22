@@ -97,8 +97,7 @@ public void OnGetNFT(string Item)
 ![Docusaurus logo](/img/get-nft.png)
 
 ## 5. Hàm transferItem
-Sử dụng hàm này để chuyển item sang địa chỉ ví khác. Hàm này trả về transaction hash. Thông tin transaction hash cũng sẽ được trả về qua callback [onTransact](/docs/sdk/Unity/over-view#9-callback-ontransact)
-(Khuyến khích xử lý logic trong hàm này).
+Sử dụng hàm này để chuyển item sang địa chỉ ví khác. Thông tin transaction hash cũng sẽ được trả về qua callback [onTransact](/docs/sdk/Unity/over-view#9-callback-ontransact)
 
 
 ```
