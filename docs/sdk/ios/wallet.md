@@ -8,7 +8,7 @@ import TabItem from '@theme/TabItem';
 
 # Ví
 
-#### 1. Hàm showConnectWalletView
+## 1. Hàm showConnectWalletView
 Hàm này hiển thị màn hình để tạo hoặc import ví. 
 
 ##### Objective C
@@ -17,7 +17,7 @@ Hàm này hiển thị màn hình để tạo hoặc import ví.
 ```
 
 
-#### 2. Hàm showWalletInfoView
+## 2. Hàm showWalletInfoView
 Hàm này hiển thị màn hình thông tin của ví. Bao gồm các chức năng: Export private key, Secret Recovery Phrase.
 
 ##### Objective C
@@ -25,7 +25,7 @@ Hàm này hiển thị màn hình thông tin của ví. Bao gồm các chức n�
 [[ChainverseSDK shared] showWalletInfoView];
 ```
 
-#### 3. Hàm logout
+## 3. Hàm logout
 Gọi hàm này để thực hiện logout. Thông tin được trả về qua callback didLogout .
 
 ##### Objective C
@@ -39,7 +39,7 @@ Gọi hàm này để thực hiện logout. Thông tin được trả về qua c
 
 ```
 
-#### 4. Hàm hứng data được trả về từ ví  Chainverse
+## 4. Hàm hứng data được trả về từ ví  Chainverse
 Khi connect thành công với ví Chainverse. Chainverse sẽ mở lại app/game thông qua scheme (đã khai báo ở phần Intergrate SDK). Vì vậy cần khai báo các hàm này để Chainverse SDK xử lý dữ liệu được trả về từ ví Chainverse.
 Khai báo ở file AppDeletegate :
 
@@ -55,7 +55,7 @@ Khai báo ở file AppDeletegate :
 ```
 
 
-#### 5. Hàm setKeepConnect
+## 5. Hàm setKeepConnect
 Hàm này tuỳ chọn thiết lập trạng thái giữ connect với ví Chainverse (Khi vào lại app không cần phải kết nối lại ví) 
 *true : Giữ trạng thái keep connect.
 *false: Không giữ trạng thái keep connect.
@@ -67,7 +67,7 @@ Hàm này tuỳ chọn thiết lập trạng thái giữ connect với ví Chain
 ```
 
 
-#### 6. Hàm getVersion
+## 6. Hàm getVersion
 Trả về version của SDK
 
 ##### Objective C
@@ -88,7 +88,7 @@ NSLog(@"TAG %@",[info signature]);
 ```
 
 
-#### 8. Hàm isUserConnected
+## 8. Hàm isUserConnected
 Kiểm tra trạng thái connect ví của user. Trả về boolean
 
 ##### Objective C
@@ -97,7 +97,7 @@ Kiểm tra trạng thái connect ví của user. Trả về boolean
 
 ```
 
-#### 10. Hàm getBalance
+## 9. Hàm getBalance
 Trả về số dư Native Coin (BNB)
 
 ##### Objective C
@@ -106,7 +106,7 @@ Trả về số dư Native Coin (BNB)
 
 ```
 
-#### 11. Hàm getBalance
+## 10. Hàm getBalance
 Trả về số dư token:
 - CVT: 0x672021e3c741910896cad6D6121446a328ba5634
 - USDT: 0x337610d27c682E347C9cD60BD4b3b107C9d34dDd
