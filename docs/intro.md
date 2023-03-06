@@ -1,3 +1,7 @@
+---
+sidebar_label: 'ChainVerse Introduction'
+sidebar_position: 1
+---
 
 # ChainVerse Intro
 
