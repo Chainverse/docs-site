@@ -14,6 +14,8 @@ Our products can be integrated in the quickest and simplest manner possible. You
 Buy Crypto with ChainVerse</a>
 ```
 
+The `QUERY_PARAMETERS` in the code above refers to optional parameters that can be added to customize the ChainVerse widget's behavior. Please refer to the [Query Parameters](/docs/ramp/partner/query_param/on_ramp) page for a detailed explanation of these parameters and how to use them.
+
 ### Embed or Iframe
 The following code example can be utilized to insert the ChainVerse widget directly into a web page of your app. It is advisable to test whether the default IFrame dimensions specified in the code fit well on your page, and make any necessary modifications.
 
