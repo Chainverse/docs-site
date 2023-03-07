@@ -13,9 +13,9 @@ Now you should have the `partner code` to generate a URL for our staging environ
 
 https://widget.dev.chainverse.xyz/buy?partnerCode=[YOUR_PARTNER_CODE]
 
-We offer a **Fee Percentage** for partner commission fees, with a default of 0. If you want to include this fee configuration in your product, please contact us directly.
+We offer our partners with a **Fee Commission**, which is either a fixed amount or a percentage, and it is initially set at 0. This fee is charged to your users. If you want to include this fee configuration into the widget, please contact us directly.
 
-Once you've made changes to the Fee Percentage, it will be reflected in the fee calculation:
+Any updates made to the Fee Commission will be reflected in the fee calculation shown below:
 
 <p align="center">
   <img src="/img/buy_estimate.png" alt="Buy Estimate" width="400"/>
@@ -29,6 +29,8 @@ Once you've made changes to the Fee Percentage, it will be reflected in the fee 
   <figcaption>Payment Screen</figcaption>
 </p>
 
-You now have the option to explore the ChainVerse widget and try out the default user flow provided by ChainVerse.
+You have the option to hide this fee commission in the widget by utilizing the `isFeePartnerHidden` parameter.
+
+Great! Now you can explore the ChainVerse widget and try out the default user flow provided by us.
 
 
