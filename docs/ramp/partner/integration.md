@@ -20,7 +20,7 @@ The `QUERY_PARAMETERS` in the code above refers to optional parameters that can 
 The following code example can be utilized to insert the ChainVerse widget directly into a web page of your app. It is advisable to test whether the default IFrame dimensions specified in the code fit well on your page, and make any necessary modifications.
 
 ```html
-<iframe width="575" title="ChainVerse Ramp Widget"
+<iframe width="575" height="906" title="ChainVerse Ramp Widget"
 src="https://widget.dev.chainverse.xyz/buy?partnerCode=[YOUR_PARTNER_CODE]&[QUERY_PARAMETERS]" 
 frameborder="no" allowtransparency="true" allowfullscreen="" 
 style="display: block; width: 100%; max-height: 906px; max-width: 575px;">
