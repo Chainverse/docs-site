@@ -29,7 +29,7 @@ Any updates made to the Fee Commission will be reflected in the fee calculation 
   <figcaption>Payment Screen</figcaption>
 </p>
 
-You have the option to hide this fee commission in the widget by utilizing the `isFeePartnerHidden` parameter.
+You have the option to hide this fee commission in the widget by utilizing the `hidePartnerFee` parameter.
 
 Great! Now you can explore the ChainVerse widget and try out the default user flow provided by us.
 
