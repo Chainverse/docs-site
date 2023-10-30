@@ -18,7 +18,7 @@ sidebar_position: 2
 | `accountName` |  | Bank account holder name | |
 | `hideAccountName` |  | If it is `1`, the account name will be hidden.| Default is `0` |
 | `disableAccountNameInput` |  | If it is `1`, the account name could not be changed.| Default is `0` |
-| `hidePartnerFee` |  | If it is `1`, the fee commissions that you are entitled to will be hidden in the widget, and we will include this fee in the "processing fee".| Default is `0` |
+| `hidePartnerFee` |  | If it is `1`, the fee commissions that you are entitled to will be hidden in the widget, and we will include this fee in the "processing fee".| Default is `1` |
 | `walletAddress` | | The address that is set to receive the cryptocurrency |  |
 | `hideWalletAddress` |  | If it is `1`, the wallet address will be hidden.| Default is `0` |
 | `disableWalletAddressInput` |  | If it is `1`, the wallet address could not be changed.| Default is `0` |
