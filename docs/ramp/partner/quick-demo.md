@@ -18,14 +18,14 @@ We offer our partners with a **Fee Commission**, which is either a fixed amount 
 Any updates made to the Fee Commission will be reflected in the fee calculation shown below:
 
 <p align="center">
-  <img src="/img/buy_estimate.png" alt="Buy Estimate" width="600"/>
+  <img src="/img/buy_estimate.jpeg" alt="Buy Estimate" width="600"/>
   <figcaption>Estimate Screen</figcaption>
 </p>
 
 <hr></hr>
 
 <p align="center">
-  <img src="/img/buy_payment.png" alt="Buy Payment" width="600"/>
+  <img src="/img/buy_payment.jpeg" alt="Buy Payment" width="600"/>
   <figcaption>Payment Screen</figcaption>
 </p>
 
