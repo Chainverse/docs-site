@@ -25,4 +25,4 @@ sidebar_position: 2
 | `notifyUrl` |  | Your Url for notification |  |
 | `redirectUrl` |  | Your Url redirection once ChainVerse completed the transaction. |  |
 | `logoURL` | | Your logo URL for your Widget |  |
-| `themeColor` | | Your theme Color for Widget |  |
+| `themeColor` | | Your theme Color for Widget. You can pass exact color name or defined color code(except HEX code) |  |
