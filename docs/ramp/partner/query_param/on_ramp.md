@@ -16,6 +16,6 @@ sidebar_position: 1
 | `hideWalletAddress` |  | If it is `1`, the wallet address will be hiden.| Default is `0` |
 | `disableWalletAddressInput` |  | If it is `1`, the wallet address could not be changed.| Default is `0` |
 | `logoURL` | | Your logo URL for your Widget |  |
-| `themeColor` | | Your theme Color for Widget |  |
+| `themeColor` | | Your theme Color for Widget. You can pass exact color name or defined color code(except HEX code) |  |
 | `notifyUrl` |  | Your Url for notification |  |
 | `redirectUrl` |  | Your Url redirection once ChainVerse completed the transaction. |  |
